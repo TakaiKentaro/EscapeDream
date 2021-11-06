@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6590674661193044418}
   - component: {fileID: 6580420848675383930}
   - component: {fileID: 6508056851395258414}
+  - component: {fileID: 5276547831304849484}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -103,6 +104,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5276547831304849484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557241783277532592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1b0dbd50f64d94b83d1ec6575c7e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_flashLight: {fileID: 6559391331795789988}
 --- !u!1 &6559391331795789988
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +161,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2.1
-  m_Range: 15
+  m_Range: 20
   m_SpotAngle: 70
   m_InnerSpotAngle: 1
   m_CookieSize: 10

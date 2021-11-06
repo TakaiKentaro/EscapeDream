@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &887981696134546205
+--- !u!1 &2406309736967119117
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 887981696134546204}
-  - component: {fileID: 887981696134546206}
-  - component: {fileID: 887981696134546207}
-  - component: {fileID: 887981696134546201}
+  - component: {fileID: 2406309736967119116}
+  - component: {fileID: 2406309736967119118}
+  - component: {fileID: 2406309736967119119}
+  - component: {fileID: 2406309736967119113}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -19,13 +19,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &887981696134546204
+--- !u!4 &2406309736967119116
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887981696134546205}
+  m_GameObject: {fileID: 2406309736967119117}
   m_LocalRotation: {x: -0, y: -0.9797294, z: -0, w: -0.20032538}
   m_LocalPosition: {x: -6.11, y: -9.25, z: 3.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -203.112, z: 0}
---- !u!54 &887981696134546206
+--- !u!54 &2406309736967119118
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887981696134546205}
+  m_GameObject: {fileID: 2406309736967119117}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -49,13 +49,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &887981696134546207
+--- !u!136 &2406309736967119119
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887981696134546205}
+  m_GameObject: {fileID: 2406309736967119117}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -63,16 +63,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &887981696134546201
+--- !u!114 &2406309736967119113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887981696134546205}
+  m_GameObject: {fileID: 2406309736967119117}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e7d97391e2eace45be65ff1fa635f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_moveSpeed: 3
+  m_staminaGauge: {fileID: 5960585929457389455, guid: 5ba2590926f80a344a7fc665aa9bffd4,
+    type: 3}
+  m_maxValu: 4
