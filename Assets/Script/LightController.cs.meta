@@ -3,7 +3,8 @@ guid: 4c1b0dbd50f64d94b83d1ec6575c7e08
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_flashLight: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

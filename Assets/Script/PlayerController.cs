@@ -30,14 +30,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Move()
     {
-        if (m_stopRun)
-        {
-            m_moveSpeed = 0;
-        }
-        else
-        {
-            m_moveSpeed = 3;
-        }
+        if (m_stopRun) m_moveSpeed = 1;
+        else m_moveSpeed = 3;
 
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
@@ -77,12 +71,12 @@ public class PlayerController : MonoBehaviour
         if (m_maxValu <= 0　&& !m_stopRun)
         {
             m_stopRun = true;
-            StartCoroutine(AA());
+            StartCoroutine(StaminaLoss());
         }
         m_staminaRect.localScale = new Vector2(m_maxValu, m_staminaRect.localScale.y);
     }
 
-    IEnumerator AA()
+    IEnumerator StaminaLoss()
     {
         yield return new WaitForSeconds(2f);
         m_check = false;
