@@ -13,7 +13,7 @@ public class LightController : MonoBehaviour
     [SerializeField] GameObject m_subBattery3;
     [SerializeField] GameObject m_subBattery4;
 
-    public static float m_batteryCapacity = 100;
+    public float m_batteryCapacity = 100;
 
     bool m_isLight = true;
        // Start is called before the first frame update
@@ -51,7 +51,6 @@ public class LightController : MonoBehaviour
     void ButteryGuage()
     {
         if(m_batteryCapacity > 0) m_batteryCapacity -= Time.deltaTime;
-
 
         Debug.Log(m_batteryCapacity);
         if(100 > m_batteryCapacity) m_subBattery1.SetActive(true);

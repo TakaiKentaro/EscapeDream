@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_flashLight: {fileID: 6559391331795789988}
+  m_lowBattery: {fileID: 0}
   m_mainBattery: {fileID: 5960585929457389455, guid: 5ba2590926f80a344a7fc665aa9bffd4,
     type: 3}
   m_subBattery1: {fileID: 5319287380380336889, guid: 9ab162f9db9dc0849b546f2dcf7f5ab5,
@@ -127,6 +128,7 @@ MonoBehaviour:
     type: 3}
   m_subBattery4: {fileID: 4202883980772579098, guid: d1ac3964a69badc4b9a78245cb6c2d64,
     type: 3}
+  m_batteryCapacity: 100
 --- !u!1 &6559391331795789988
 GameObject:
   m_ObjectHideFlags: 0

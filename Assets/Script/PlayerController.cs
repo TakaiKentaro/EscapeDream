@@ -89,5 +89,9 @@ public class PlayerController : MonoBehaviour
         m_stopRun = false;
         m_maxValu = m_saveMax;
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }
 
