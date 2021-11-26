@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_moveSpeed = 1f;
     Rigidbody m_rb = default;
 
+    public float h;
+    public float v;
+
     [SerializeField] GameObject m_staminaGauge;
     RectTransform m_staminaRect;
     [SerializeField] float m_maxValu = 1;
@@ -30,11 +33,12 @@ public class PlayerController : MonoBehaviour
     }
     private void Move()
     {
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
         if (m_stopRun) m_moveSpeed = 1;
         else m_moveSpeed = 3;
 
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        
         Vector3 dir = new Vector3(h, 0, v);
         dir = Camera.main.transform.TransformDirection(dir);
         dir.y = 0;

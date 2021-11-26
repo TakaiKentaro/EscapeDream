@@ -15,7 +15,7 @@ public class LightController : MonoBehaviour
 
     public float m_batteryCapacity = 100;
 
-    bool m_isLight = true;
+    public bool m_isLight = true;
        // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +27,10 @@ public class LightController : MonoBehaviour
     {
         OnOff();
     }
+    
+    /// <summary>
+    /// ライトのオン・オフの切り替え
+    /// </summary>
     void OnOff()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -48,6 +52,10 @@ public class LightController : MonoBehaviour
             ButteryGuage();
         }
     }
+
+    /// <summary>
+    /// バッテリーゲージのImage
+    /// </summary>
     void ButteryGuage()
     {
         if(m_batteryCapacity > 0) m_batteryCapacity -= Time.deltaTime;
