@@ -7,11 +7,12 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] GameObject m_Player;
+    [SerializeField] GameObject m_Light;
     [SerializeField] SphereCollider searchArea;
-    [SerializeField] float searchAngle = 130f;
+
+    [SerializeField] float wanderRange;
     private NavMeshAgent navMeshAgent;
 
-    public GameObject m_Light;
     bool m_isSerch;
     float m_serchTime;
 
@@ -23,7 +24,7 @@ public class EnemyController : MonoBehaviour
 
         // NavMeshAgentを保持しておく
         navMeshAgent = GetComponent<NavMeshAgent>();
-        m_serchTime = 5;
+        m_serchTime = 3;
     }
 
     // Update is called once per frame
