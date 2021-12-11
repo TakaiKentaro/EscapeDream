@@ -59,7 +59,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.7
+  m_Radius: 0.6
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -76,6 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_moveSpeed: 3
+  h: 0
+  v: 0
   m_staminaGauge: {fileID: 5960585929457389455, guid: 5ba2590926f80a344a7fc665aa9bffd4,
     type: 3}
   m_maxValu: 4

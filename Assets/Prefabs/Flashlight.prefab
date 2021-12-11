@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6580420848675383930}
   - component: {fileID: 6508056851395258414}
   - component: {fileID: 5276547831304849484}
+  - component: {fileID: 7138569748096696437}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -129,6 +130,20 @@ MonoBehaviour:
   m_subBattery4: {fileID: 4202883980772579098, guid: d1ac3964a69badc4b9a78245cb6c2d64,
     type: 3}
   m_batteryCapacity: 100
+  m_isLight: 1
+--- !u!65 &7138569748096696437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557241783277532592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.072043225, y: 1.5, z: 0.073154606}
+  m_Center: {x: -0.000000020489097, y: 0.64, z: 0}
 --- !u!1 &6559391331795789988
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LightController : MonoBehaviour
 {
@@ -16,9 +17,12 @@ public class LightController : MonoBehaviour
     public float m_batteryCapacity = 100;
 
     public bool m_isLight = true;
+
+    [SerializeField] GameObject _itemText;
        // Start is called before the first frame update
     void Start()
     {
+        _itemText.SetActive(false);
         m_lowBattery.SetActive(false);
     }
 
@@ -60,7 +64,7 @@ public class LightController : MonoBehaviour
     {
         if(m_batteryCapacity > 0) m_batteryCapacity -= Time.deltaTime;
 
-        Debug.Log(m_batteryCapacity);
+        //Debug.Log(m_batteryCapacity);
         if(100 > m_batteryCapacity) m_subBattery1.SetActive(true);
         if (75 > m_batteryCapacity)
         {
@@ -87,5 +91,15 @@ public class LightController : MonoBehaviour
             m_lowBattery.SetActive(true);
             m_flashLight.SetActive(false);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Item")) _itemText.SetActive(true);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Item")) _itemText.SetActive(false);
     }
 }

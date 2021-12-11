@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -11,7 +9,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] SphereCollider searchArea;
 
     [SerializeField] float wanderRange;
-    private NavMeshAgent navMeshAgent;
+    private NavMeshAgent _navMeshAgent;
+    private NavMeshHit _navMeshHit;
 
     bool m_isSerch;
     float m_serchTime;
@@ -23,7 +22,7 @@ public class EnemyController : MonoBehaviour
         m_Player = GameObject.Find("Player");
 
         // NavMeshAgentを保持しておく
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         m_serchTime = 3;
     }
 
@@ -43,7 +42,7 @@ public class EnemyController : MonoBehaviour
     {
         if (m_Light.GetComponent<LightController>().m_isLight == false || m_Player.GetComponent<PlayerController>().h != 0)
         {
-            navMeshAgent.destination = m_Player.transform.position;
+            _navMeshAgent.destination = m_Player.transform.position;
         }
     }
 
