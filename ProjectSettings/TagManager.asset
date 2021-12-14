@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Batteries
   - Pillar
+  - Item
+  - EnterDoor
   layers:
   - Default
   - TransparentFX

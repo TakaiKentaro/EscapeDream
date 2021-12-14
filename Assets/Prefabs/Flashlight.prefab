@@ -131,6 +131,7 @@ MonoBehaviour:
     type: 3}
   m_batteryCapacity: 100
   m_isLight: 1
+  _itemText: {fileID: 0}
 --- !u!65 &7138569748096696437
 BoxCollider:
   m_ObjectHideFlags: 0
