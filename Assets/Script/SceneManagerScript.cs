@@ -14,6 +14,7 @@ public class SceneManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _fadeImage.gameObject.SetActive(true);
         DoFadeImageOut(0f);
     }
 
@@ -27,14 +28,13 @@ public class SceneManagerScript : MonoBehaviour
         }
     }
 
-    void DoFadeImageOut(float color)
+    public void DoFadeImageOut(float color)
     {
         _fadeImage.DOFade(color, 3f);
     }
 
-    void DoFadeImageIn(float color)
+    public void DoFadeImageIn(float color)
     {
         _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("MAP"));
-        _check = false;
     }
 }

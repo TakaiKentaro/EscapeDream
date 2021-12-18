@@ -223,6 +223,11 @@ PrefabInstance:
       propertyPath: _displayText
       value: 
       objectReference: {fileID: 716009325}
+    - target: {fileID: 6061319124187105492, guid: f7e0bcb267ac12c4daeefb2b26162dc1,
+        type: 3}
+      propertyPath: _sceneManager
+      value: 
+      objectReference: {fileID: 214570222}
     - target: {fileID: 8762533818620939558, guid: f7e0bcb267ac12c4daeefb2b26162dc1,
         type: 3}
       propertyPath: m_RootOrder
@@ -1739,7 +1744,7 @@ PrefabInstance:
     - target: {fileID: 5507476984199020056, guid: f2b315d4f194bb14b9e312f3f58a6262,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 5507476984199020056, guid: f2b315d4f194bb14b9e312f3f58a6262,
         type: 3}
