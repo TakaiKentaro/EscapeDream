@@ -228,6 +228,11 @@ PrefabInstance:
       propertyPath: _sceneManager
       value: 
       objectReference: {fileID: 214570222}
+    - target: {fileID: 6061319124187105492, guid: f7e0bcb267ac12c4daeefb2b26162dc1,
+        type: 3}
+      propertyPath: _itemMannegement
+      value: 
+      objectReference: {fileID: 799850864}
     - target: {fileID: 8762533818620939558, guid: f7e0bcb267ac12c4daeefb2b26162dc1,
         type: 3}
       propertyPath: m_RootOrder
@@ -848,6 +853,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770835657}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &799850864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 799850865}
+  - component: {fileID: 799850866}
+  m_Layer: 0
+  m_Name: ItemCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &799850865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799850864}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.0107417, y: -9.127178, z: 5.7221284}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &799850866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799850864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a6ab50cd45fd9469ebf708f211b9ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _keyCheck: 1
 --- !u!1 &813105875 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 946150754460737057, guid: 5ba2590926f80a344a7fc665aa9bffd4,
@@ -1823,6 +1872,11 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 5507476984199020063, guid: f2b315d4f194bb14b9e312f3f58a6262,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2b315d4f194bb14b9e312f3f58a6262, type: 3}
 --- !u!1001 &1765405334
@@ -2333,7 +2387,7 @@ PrefabInstance:
     - target: {fileID: 7056542332915106780, guid: 20700cf3af3af6540a67896685dbc5a5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7056542332915106786, guid: 20700cf3af3af6540a67896685dbc5a5,
         type: 3}

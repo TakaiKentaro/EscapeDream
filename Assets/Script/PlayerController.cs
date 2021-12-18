@@ -6,23 +6,26 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] float m_moveSpeed = 1f;
-    Rigidbody m_rb = default;
+    [SerializeField] float _moveSpeed = 1f;
+    Rigidbody _rb = default;
 
     public float h;
     public float v;
 
-    [SerializeField] GameObject m_staminaGauge;
-    RectTransform m_staminaRect;
-    [SerializeField] float m_maxValu = 1;
-    float m_saveMax;
-    bool m_check;
-    bool m_stopRun = false;
+    [SerializeField] GameObject _staminaGauge;
+    RectTransform _staminaRect;
+    [SerializeField] float _maxValu = 1;
+    float _saveMax;
+    bool _check;
+    bool _stopRun = false;
+
+    [SerializeField] GameObject _enemy;
     void Start()
     {
-        m_rb = GetComponent<Rigidbody>();
-        m_staminaRect = m_staminaGauge.GetComponent<RectTransform>();
-        m_saveMax = m_maxValu;
+        _rb = GetComponent<Rigidbody>();
+        _staminaRect = _staminaGauge.GetComponent<RectTransform>();
+        _enemy = GameObject.Find("TestEnemy");
+        _saveMax = _maxValu;
     }
 
     // Update is called once per frame
@@ -35,8 +38,8 @@ public class PlayerController : MonoBehaviour
     {
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
-        if (m_stopRun) m_moveSpeed = 1;
-        else m_moveSpeed = 3;
+        if (_stopRun) _moveSpeed = 1;
+        else _moveSpeed = 3;
 
         
         Vector3 dir = new Vector3(h, 0, v);
@@ -45,53 +48,54 @@ public class PlayerController : MonoBehaviour
 
         if (dir != Vector3.zero) this.transform.forward = dir;
 
-        if (Input.GetKey("left shift") && !m_stopRun)
+        if (Input.GetKey("left shift") && !_stopRun)
         {
-            m_moveSpeed = 5;//ダッシュ時スピードアップ
+            _moveSpeed = 5;//ダッシュ時スピードアップ
 
             if (h != 0 || v != 0)
             {
-                m_check = true;
+                _enemy.GetComponent<EnemyTestScripts>()._serchRange = 5;
+                _check = true;
             }
         }
-        if (Input.GetKeyUp("left shift") && !m_stopRun)
+        if (Input.GetKeyUp("left shift") && !_stopRun)
         {
-            m_check = false;
-            m_moveSpeed = 3;//離すと戻る
+            _check = false;
+            _moveSpeed = 3;//離すと戻る
         }
-        m_rb.velocity = dir.normalized * m_moveSpeed + m_rb.velocity.y * Vector3.up;
+        _rb.velocity = dir.normalized * _moveSpeed + _rb.velocity.y * Vector3.up;
     }
 
     void MoveGuage()
     {
-        if (m_check && m_maxValu > 0)
+        if (_check && _maxValu > 0)
         {
-            m_maxValu -= Time.deltaTime;
+            _maxValu -= Time.deltaTime;
         }
-        else if (m_maxValu < m_saveMax)
+        else if (_maxValu < _saveMax)
         {
-            m_maxValu += Time.deltaTime;
+            _maxValu += Time.deltaTime;
         }
-        if (m_maxValu <= 0　&& !m_stopRun)
+        if (_maxValu <= 0　&& !_stopRun)
         {
-            m_stopRun = true;
+            _stopRun = true;
             StartCoroutine(StaminaLoss());
         }
-        m_staminaRect.localScale = new Vector2(m_maxValu, m_staminaRect.localScale.y);
+        _staminaRect.localScale = new Vector2(_maxValu, _staminaRect.localScale.y);
     }
 
     IEnumerator StaminaLoss()
     {
         yield return new WaitForSeconds(2f);
-        m_check = false;
-        while (m_maxValu <= m_saveMax)
+        _check = false;
+        while (_maxValu <= _saveMax)
         {
             
-            m_maxValu += Time.deltaTime;
+            _maxValu += Time.deltaTime;
             yield return null;
         }
-        m_stopRun = false;
-        m_maxValu = m_saveMax;
+        _stopRun = false;
+        _maxValu = _saveMax;
     }
     private void OnCollisionEnter(Collision collision)
     {

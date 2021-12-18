@@ -8,6 +8,7 @@ TagManager:
   - Pillar
   - Item
   - EnterDoor
+  - OutDoor
   layers:
   - Default
   - TransparentFX

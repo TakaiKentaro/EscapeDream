@@ -16,7 +16,7 @@ public class EnemyTestScripts : MonoBehaviour
     [SerializeField] GameObject _light;
 
     float distance;
-    [SerializeField] float _serchRange = 3f;
+    [SerializeField] public float _serchRange = 3f;
     [SerializeField] float _quitRange = 5f;
     [SerializeField] bool _tracking = false;
 

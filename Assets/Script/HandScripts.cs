@@ -7,12 +7,15 @@ public class HandScripts : MonoBehaviour
 {
     [SerializeField] Text _displayText;
     [SerializeField] GameObject _sceneManager;
+    [SerializeField] GameObject _itemMannegement;
+
     bool _isArea;
     bool _isItem;
     // Start is called before the first frame update
     private void Start()
     {
         _sceneManager = GameObject.Find("SceneManager");
+        _itemMannegement = GameObject.Find("ItemCheck");
     }
 
     private void Update()
@@ -26,8 +29,15 @@ public class HandScripts : MonoBehaviour
         {
             if (Input.GetButtonDown("Item"))
             {
-                Debug.Log("aaa");
                 _sceneManager.GetComponent<SceneManagerScript>().DoFadeImageIn(1f);
+            }
+        }
+        if(_isItem)
+        {
+            if(Input.GetButtonDown("Item"))
+            {
+                _displayText.text = "アイテムを取った";
+                _itemMannegement.GetComponent<ItemmanagementScript>()._keyCheck = false;
             }
         }
     }
@@ -36,12 +46,15 @@ public class HandScripts : MonoBehaviour
         switch(other.gameObject.tag)
         {
             case "Item":
-                _displayText.text = "”eキー”アイテムを取る";
+                _displayText.text = "”Eキー”アイテムを取る";
                 _isItem = true;
                 break;
             case "EnterDoor":
-                _displayText.text = "”eキー”入る";
+                _displayText.text = "”Eキー”入る";
                 _isArea = true;
+                break;
+            case "OutDoor":
+                _displayText.text = "”Eキー”出る";
                 break;
         }
     }
