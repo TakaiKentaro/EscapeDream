@@ -9,6 +9,9 @@ TagManager:
   - Item
   - EnterDoor
   - OutDoor
+  - Key
+  - Picture
+  - Cutter
   layers:
   - Default
   - TransparentFX

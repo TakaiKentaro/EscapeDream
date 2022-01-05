@@ -37,4 +37,5 @@ public class SceneManagerScript : MonoBehaviour
     {
         _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("MAP"));
     }
+
 }

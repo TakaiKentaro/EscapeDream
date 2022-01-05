@@ -6,9 +6,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyTestScripts : MonoBehaviour
 {
-
     public Transform[] _points;
-    [SerializeField] int _destPoint = 0;
+    [SerializeField, Tooltip("_pointsを循環する")] int _destPoint = 0;
     private NavMeshAgent _navMeshAgent;
 
     Vector3 _playerPos;

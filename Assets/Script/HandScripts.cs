@@ -5,39 +5,61 @@ using UnityEngine.UI;
 
 public class HandScripts : MonoBehaviour
 {
+    [Header("テキスト")]
     [SerializeField] Text _displayText;
+    
+    [Header("シーン移動のscript")]
     [SerializeField] GameObject _sceneManager;
-    [SerializeField] GameObject _itemMannegement;
 
-    bool _isArea;
+    [Header("アイテム管理")]
+    [SerializeField] GameObject _itemManager;
+
+    bool _isEnterDoor;
+    bool _isOutDoor;
     bool _isItem;
+    Collider _itemCollider;
     // Start is called before the first frame update
     private void Start()
     {
         _sceneManager = GameObject.Find("SceneManager");
-        _itemMannegement = GameObject.Find("ItemCheck");
+        _itemManager = GameObject.Find("ItemCheck");
     }
 
     private void Update()
     {
         KeyInput();
+        DoorInOut();
     }
 
     void KeyInput()
     {
-        if(_isArea)
+        if(_isItem)
         {
-            if (Input.GetButtonDown("Item"))
+            if(Input.GetButtonDown("Item") && _itemManager.GetComponent<ItemManager>()._isKey == false)
+            {
+                _displayText.text = "鍵を取った";
+                _itemManager.GetComponent<ItemManager>()._isKey = true;
+                Destroy(_itemCollider.gameObject);
+                Invoke(nameof(ResetText), 2);
+            }
+        }
+    }
+    void DoorInOut()
+    {
+        if (_isEnterDoor && Input.GetButtonDown("Item"))
+        {
+            _sceneManager.GetComponent<SceneManagerScript>().DoFadeImageIn(1f);
+        }
+
+        if (_isOutDoor && Input.GetButtonDown("Item"))　//ドアを出る
+        {
+            if (_itemManager.GetComponent<ItemManager>()._isKey == true) //鍵を持っているかを判定
             {
                 _sceneManager.GetComponent<SceneManagerScript>().DoFadeImageIn(1f);
             }
-        }
-        if(_isItem)
-        {
-            if(Input.GetButtonDown("Item"))
+            else
             {
-                _displayText.text = "アイテムを取った";
-                _itemMannegement.GetComponent<ItemmanagementScript>()._keyCheck = false;
+                _displayText.text = "鍵がない";
             }
         }
     }
@@ -45,24 +67,35 @@ public class HandScripts : MonoBehaviour
     {
         switch(other.gameObject.tag)
         {
-            case "Item":
+            case "Key":
                 _displayText.text = "”Eキー”アイテムを取る";
                 _isItem = true;
+                _itemCollider = other;
                 break;
             case "EnterDoor":
                 _displayText.text = "”Eキー”入る";
-                _isArea = true;
+                _isEnterDoor = true;
                 break;
             case "OutDoor":
                 _displayText.text = "”Eキー”出る";
+                _isOutDoor = true;
                 break;
         }
+    }
+
+    void ResetText()
+    {
+        _displayText.text = "";
+        _isEnterDoor = false;
+        _isItem = false;
+        _itemCollider = null;
     }
 
     private void OnTriggerExit(Collider other)
     {
         _displayText.text = "";
-        _isArea = false;
+        _isEnterDoor = false;
         _isItem = false;
+        _itemCollider = null;
     }
 }

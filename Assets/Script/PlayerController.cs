@@ -5,20 +5,23 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
+    [Header("プレイヤーの移動")]
     [SerializeField] float _moveSpeed = 1f;
     Rigidbody _rb = default;
 
     public float h;
     public float v;
 
+    [Header("スタミナゲージ")]
     [SerializeField] GameObject _staminaGauge;
     RectTransform _staminaRect;
+
     [SerializeField] float _maxValu = 1;
     float _saveMax;
     bool _check;
     bool _stopRun = false;
 
+    [Header("敵")]
     [SerializeField] GameObject _enemy;
     void Start()
     {
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp("left shift") && !_stopRun)
         {
             _check = false;
-            _moveSpeed = 3;//離すと戻る
+            _moveSpeed = 3;//歩きスピード
         }
         _rb.velocity = dir.normalized * _moveSpeed + _rb.velocity.y * Vector3.up;
     }
@@ -96,10 +99,6 @@ public class PlayerController : MonoBehaviour
         }
         _stopRun = false;
         _maxValu = _saveMax;
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        
     }
 }
 
