@@ -6,7 +6,7 @@ using System.Linq;
 
 public class TresureChest : MonoBehaviour
 {
-    int[] _passArray;
+    int[] _passArray = new int[] {0,0,0,0};
     int[] _correct = new int[] { 1, 2, 2, 6 };
 
     public Image[] _bottons;
@@ -18,6 +18,7 @@ public class TresureChest : MonoBehaviour
     //ボタンを押して1～9まで変更できる
     public void OnClickPassward(int position)
     {
+        Debug.Log("password" + position);
         ChangeNumber(position);
         ShowNumber(position);
     }
@@ -26,7 +27,7 @@ public class TresureChest : MonoBehaviour
     {
         int num = _passArray[position];
         num++;
-        if (num > 9) num = 0;
+        num %= 10;
         _passArray[position] = num;
     }
 
@@ -41,11 +42,13 @@ public class TresureChest : MonoBehaviour
         //パスワードが合っていた時の処理
         if(_passArray.SequenceEqual(_correct))
         {
-
+            _message.text = "鍵が開いた";
+            Debug.Log("開錠した");
         }
         else //パスワードが違うときの処理
         {
-
+            _message.text = "パスワードが違うようだ";
+            Debug.Log("パスワードが違う");
         }
     }
 }
