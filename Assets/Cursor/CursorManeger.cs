@@ -9,12 +9,12 @@ public class CursorManeger : MonoBehaviour
     /// true = カーソルを表示する。
     /// false = カーソルを消し、中央に固定する。
     /// </summary>
-    [SerializeField] bool m_cursor;
-    void Start()
+    public bool m_cursor;
+
+    private void Update()
     {
         SetUp();
     }
-
     public void SetUp()
     {
         Cursor.visible = m_cursor;

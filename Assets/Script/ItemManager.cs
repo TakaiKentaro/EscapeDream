@@ -9,4 +9,5 @@ public class ItemManager : MonoBehaviour
     public bool _isPicture;　//絵
     public bool _isWriter;　//ライター
     public bool _isCutter;　//カッター
+    public bool _isChest;
 }

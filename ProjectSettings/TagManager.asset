@@ -12,6 +12,7 @@ TagManager:
   - Key
   - Picture
   - Cutter
+  - Chest
   layers:
   - Default
   - TransparentFX
