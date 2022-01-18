@@ -27,7 +27,8 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _staminaRect = _staminaGauge.GetComponent<RectTransform>();
-        _enemy = GameObject.Find("TestEnemy");
+        //_enemy = GameObject.Find("TestEnemy");
+        _enemy = GameObject.FindObjectOfType<EnemyTestScripts>().gameObject;
         _saveMax = _maxValu;
     }
 
