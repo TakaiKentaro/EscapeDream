@@ -7418,6 +7418,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!95 &1234932726052951
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234932726052949}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2e08754efdc8e44f9c31e25ee26a127, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &513484107920590331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7618,10 +7637,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4184592110957344589, guid: 71993f9dc8ca0d241a436bc770039e88,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 169434824c6366e49aec70a4548815e6, type: 2}
     - target: {fileID: 4270717635943566143, guid: 71993f9dc8ca0d241a436bc770039e88,
         type: 3}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273434850497669885, guid: 71993f9dc8ca0d241a436bc770039e88,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273434850497669885, guid: 71993f9dc8ca0d241a436bc770039e88,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.000000022860473
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273434850497669885, guid: 71993f9dc8ca0d241a436bc770039e88,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273434850497669885, guid: 71993f9dc8ca0d241a436bc770039e88,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273434850497669885, guid: 71993f9dc8ca0d241a436bc770039e88,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4273717090926866839, guid: 71993f9dc8ca0d241a436bc770039e88,
         type: 3}

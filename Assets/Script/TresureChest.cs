@@ -14,7 +14,15 @@ public class TresureChest : MonoBehaviour
     public Sprite[] _sprites;
 
     public Text _message;
-    
+
+    [SerializeField] GameObject _chestCap;
+    Animator _anim;
+
+    void Start()
+    {
+        _anim = GameObject.Find(_chestCap.name).GetComponent<Animator>(); 
+    }
+
     //ボタンを押して1～9まで変更できる
     public void OnClickPassward(int position)
     {
@@ -46,6 +54,7 @@ public class TresureChest : MonoBehaviour
         {
             _letOpen = true;
             _message.text = "鍵が開いた";
+            _anim.SetBool("Open", true);
             Debug.Log("開錠した");
         }
         else //パスワードが違うときの処理
