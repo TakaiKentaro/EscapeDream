@@ -11,8 +11,8 @@ TagManager:
   - OutDoor
   - Key
   - Picture
-  - Cutter
   - Chest
+  - Enemy
   layers:
   - Default
   - TransparentFX
