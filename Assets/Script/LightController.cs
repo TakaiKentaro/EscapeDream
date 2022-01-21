@@ -6,18 +6,20 @@ using UnityEngine.UI;
 public class LightController : MonoBehaviour
 {
     [SerializeField] GameObject m_flashLight;
+    [SerializeField] GameObject _hand;
 
     public bool m_isLight = true;
 
        // Start is called before the first frame update
     void Start()
     {
-       
+        _hand = GameObject.Find("HandCollider");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_hand.GetComponent<HandScripts>()._moveStop == true) return;
         OnOff();
     }
     

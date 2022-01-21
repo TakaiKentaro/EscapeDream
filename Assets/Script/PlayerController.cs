@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     public float h;
     public float v;
 
+    [SerializeField] Transform _respownPos;
+    [SerializeField] GameObject _hand;
+
     [Header("スタミナゲージ")]
     [SerializeField] GameObject _staminaGauge;
     RectTransform _staminaRect;
@@ -30,11 +33,13 @@ public class PlayerController : MonoBehaviour
         //_enemy = GameObject.Find("TestEnemy");
         _enemy = GameObject.FindObjectOfType<EnemyTestScripts>().gameObject;
         _saveMax = _maxValu;
+        _hand = GameObject.Find("HandCollider");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(_hand.GetComponent<HandScripts>()._moveStop == true) return;
         Move();
         MoveGuage();
     }
@@ -100,6 +105,17 @@ public class PlayerController : MonoBehaviour
         }
         _stopRun = false;
         _maxValu = _saveMax;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch(collision.gameObject.tag)
+        {
+            case "Enemy":
+                this.transform.position = _respownPos.position;
+                break;
+
+        }
     }
 }
 

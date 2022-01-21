@@ -22,6 +22,7 @@ public class HandScripts : MonoBehaviour
     bool _isOutDoor;
     bool _isItem;
     bool _isChest;
+    public bool _moveStop;
     Collider _itemCollider;
     // Start is called before the first frame update
     private void Start()
@@ -79,6 +80,7 @@ public class HandScripts : MonoBehaviour
             _cursorManager.GetComponent<CursorManeger>().m_cursor = true;
             _panel.SetActive(true);
             _camera.SetActive(false);
+            _moveStop = true;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -103,6 +105,9 @@ public class HandScripts : MonoBehaviour
                 _displayText.text = "”Eキー”開ける";
                 _isChest = true;
                 break;
+            case "Picture":
+                _displayText.text = "”Eキー”見る";
+                break;
         }
     }
 
@@ -115,7 +120,8 @@ public class HandScripts : MonoBehaviour
         _isChest = false;
         _panel.SetActive(false);
         _cursorManager.GetComponent<CursorManeger>().m_cursor = false;
-        //_camera.SetActive(true);
+        _camera.SetActive(true);
+        _moveStop = false;
     }
 
     void ResetText()
