@@ -37,11 +37,14 @@ public class TresureChest : MonoBehaviour
         _bottons[position].sprite = _sprites[num];
     }
 
+    public bool _letOpen = false;
+
     public void OnClickEnter()
     {
         //パスワードが合っていた時の処理
         if(_passArray.SequenceEqual(_correct))
         {
+            _letOpen = true;
             _message.text = "鍵が開いた";
             Debug.Log("開錠した");
         }

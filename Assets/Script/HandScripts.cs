@@ -16,6 +16,7 @@ public class HandScripts : MonoBehaviour
     [SerializeField] GameObject _panel;
     [SerializeField] GameObject _cursorManager;
     [SerializeField] GameObject _camera;
+    [SerializeField] GameObject _chest;
 
     bool _isEnterDoor;
     bool _isOutDoor;
@@ -28,7 +29,7 @@ public class HandScripts : MonoBehaviour
         _sceneManager = GameObject.Find("SceneManager");
         _itemManager = GameObject.Find("ItemCheck");
         _cursorManager = GameObject.Find("CursorManeger");
-        _camera = GameObject.Find("CM vcam1");
+        _chest = GameObject.Find("Chest");
     }
 
     private void Update()
@@ -98,10 +99,23 @@ public class HandScripts : MonoBehaviour
                 _isOutDoor = true;
                 break;
             case "Chest":
+                //if (_chest.GetComponent<TresureChest>()._letOpen == true) break;
                 _displayText.text = "”Eキー”開ける";
                 _isChest = true;
                 break;
         }
+    }
+
+    public void OnBackButon()
+    {
+        _displayText.text = "";
+        _isEnterDoor = false;
+        _isItem = false;
+        _itemCollider = null;
+        _isChest = false;
+        _panel.SetActive(false);
+        _cursorManager.GetComponent<CursorManeger>().m_cursor = false;
+        //_camera.SetActive(true);
     }
 
     void ResetText()
@@ -113,7 +127,7 @@ public class HandScripts : MonoBehaviour
         _isChest = false;
         _panel.SetActive(false);
         _cursorManager.GetComponent<CursorManeger>().m_cursor = false;
-        _camera.SetActive(true);
+        //_camera.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
@@ -125,6 +139,6 @@ public class HandScripts : MonoBehaviour
         _isChest = false;
         _panel.SetActive(false);
         _cursorManager.GetComponent<CursorManeger>().m_cursor = false;
-        _camera.SetActive(true);
+        //_camera.SetActive(true);
     }
 }
