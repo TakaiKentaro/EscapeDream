@@ -16,7 +16,7 @@ public class DoorController : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            _anim.Play("OpenDoor");
+            _anim.SetBool("OpenDoor",true);
         }
     }
 
@@ -24,7 +24,13 @@ public class DoorController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            _anim.Play("OpenDoor",-1);
+            StartCoroutine("CloseDoor");
         }
+    }
+
+    IEnumerator CloseDoor()
+    {
+        yield return new WaitForSeconds(2);
+        _anim.SetBool("OpenDoor", false);
     }
 }
