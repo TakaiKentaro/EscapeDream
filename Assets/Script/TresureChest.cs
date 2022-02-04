@@ -18,8 +18,11 @@ public class TresureChest : MonoBehaviour
     [SerializeField] GameObject _chestCap;
     Animator _anim;
 
+    [SerializeField] GameObject _itemKey;
+
     void Start()
     {
+        _itemKey.SetActive(false);
         _anim = GameObject.Find(_chestCap.name).GetComponent<Animator>(); 
     }
 
@@ -53,6 +56,7 @@ public class TresureChest : MonoBehaviour
         if(_passArray.SequenceEqual(_correct))
         {
             _letOpen = true;
+            _itemKey.SetActive(true);
             _message.text = "鍵が開いた";
             _anim.SetBool("Open", true);
             Debug.Log("開錠した");

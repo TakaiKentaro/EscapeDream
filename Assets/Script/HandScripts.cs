@@ -12,6 +12,7 @@ public class HandScripts : MonoBehaviour
     [SerializeField] GameObject _sceneManager;
 
     [Header("アイテム管理")]
+    [SerializeField] GameObject _flashLight;
     [SerializeField] GameObject _itemManager;
     [SerializeField] GameObject _panel;
     [SerializeField] GameObject _cursorManager;
@@ -19,6 +20,7 @@ public class HandScripts : MonoBehaviour
     [SerializeField] GameObject _chest;
     ShowPicture _showPicture;
 
+    bool _takeLight;
     bool _isEnterDoor;
     bool _isOutDoor;
     bool _isItem;
@@ -27,9 +29,11 @@ public class HandScripts : MonoBehaviour
     public bool _isPicture;
     Collider _itemCollider;
     Collider _picCollider;
+    Collider _lightCollider;
     // Start is called before the first frame update
     private void Start()
     {
+        _flashLight.SetActive(false);
         _showPicture = GameObject.FindObjectOfType<ShowPicture>();
     }
 
@@ -39,6 +43,7 @@ public class HandScripts : MonoBehaviour
         DoorInOut();
         Chest();
         LookImage(_picCollider);
+        TakeLight(_lightCollider);
     }
 
     void KeyInput()
@@ -106,6 +111,15 @@ public class HandScripts : MonoBehaviour
             }
         }
     }
+
+    void TakeLight(Collider other)
+    {
+        if(_takeLight && Input.GetButtonDown("Item"))
+        {
+            Destroy(other.gameObject);
+            _flashLight.SetActive(true);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         switch(other.gameObject.tag)
@@ -132,6 +146,11 @@ public class HandScripts : MonoBehaviour
                 _displayText.text = "”Eキー”見る";
                 _isPicture = true;
                 _picCollider = other;
+                break;
+            case "FlashLight":
+                _displayText.text = "”Eキー”手に持つ";
+                _takeLight = true;
+                _lightCollider = other;
                 break;
         }
     }
@@ -173,6 +192,7 @@ public class HandScripts : MonoBehaviour
         _panel.SetActive(false);
         _isPicture = false;
         _cursorManager.GetComponent<CursorManeger>().m_cursor = false;
+        _takeLight = false;
         //_camera.SetActive(true);
     }
 }

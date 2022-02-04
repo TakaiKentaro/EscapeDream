@@ -13,6 +13,7 @@ TagManager:
   - Picture
   - Chest
   - Enemy
+  - FlashLight
   layers:
   - Default
   - TransparentFX
