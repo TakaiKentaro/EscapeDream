@@ -17,20 +17,20 @@ public class HandScripts : MonoBehaviour
     [SerializeField] GameObject _cursorManager;
     [SerializeField] GameObject _camera;
     [SerializeField] GameObject _chest;
+    ShowPicture _showPicture;
 
     bool _isEnterDoor;
     bool _isOutDoor;
     bool _isItem;
     bool _isChest;
     public bool _moveStop;
+    public bool _isPicture;
     Collider _itemCollider;
+    Collider _picCollider;
     // Start is called before the first frame update
     private void Start()
     {
-        _sceneManager = GameObject.Find("SceneManager");
-        _itemManager = GameObject.Find("ItemCheck");
-        _cursorManager = GameObject.Find("CursorManeger");
-        _chest = GameObject.Find("Chest");
+        _showPicture = GameObject.FindObjectOfType<ShowPicture>();
     }
 
     private void Update()
@@ -38,6 +38,7 @@ public class HandScripts : MonoBehaviour
         KeyInput();
         DoorInOut();
         Chest();
+        LookImage(_picCollider);
     }
 
     void KeyInput()
@@ -83,6 +84,28 @@ public class HandScripts : MonoBehaviour
             _moveStop = true;
         }
     }
+
+    void LookImage(Collider other)
+    {
+        if(_isPicture && Input.GetButtonDown("Item"))
+        {
+            _cursorManager.GetComponent<CursorManeger>().m_cursor = true;
+            _camera.SetActive(false);
+            _moveStop = true;
+            switch (other.gameObject.name)
+            {
+                case "Picture1":
+                    _showPicture.ShowImage(0);
+                    break;
+                case "Picture2":
+                    _showPicture.ShowImage(1);
+                    break;
+                case "Picture3":
+                    _showPicture.ShowImage(2);
+                    break;
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         switch(other.gameObject.tag)
@@ -107,6 +130,8 @@ public class HandScripts : MonoBehaviour
                 break;
             case "Picture":
                 _displayText.text = "”Eキー”見る";
+                _isPicture = true;
+                _picCollider = other;
                 break;
         }
     }
@@ -122,6 +147,8 @@ public class HandScripts : MonoBehaviour
         _cursorManager.GetComponent<CursorManeger>().m_cursor = false;
         _camera.SetActive(true);
         _moveStop = false;
+        _isPicture = false;
+        _showPicture.ResetImage();
     }
 
     void ResetText()
@@ -144,6 +171,7 @@ public class HandScripts : MonoBehaviour
         _itemCollider = null;
         _isChest = false;
         _panel.SetActive(false);
+        _isPicture = false;
         _cursorManager.GetComponent<CursorManeger>().m_cursor = false;
         //_camera.SetActive(true);
     }

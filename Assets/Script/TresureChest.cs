@@ -60,7 +60,7 @@ public class TresureChest : MonoBehaviour
         else //パスワードが違うときの処理
         {
             _message.text = "パスワードが違うようだ";
-            Debug.Log("パスワードが違う");
+            Debug.Log("違う");
         }
     }
 }

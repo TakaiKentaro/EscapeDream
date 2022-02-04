@@ -19,6 +19,8 @@ public class EnemyTestScripts : MonoBehaviour
     [SerializeField] float _quitRange = 5f;
     [SerializeField] bool _tracking = false;
 
+    [SerializeField] Transform _backPoint;
+
     float m_serchTime;
     void Start()
     {
@@ -27,8 +29,8 @@ public class EnemyTestScripts : MonoBehaviour
 
         GotoNextPoint();
 
-        _player = GameObject.Find("Player");
-        _light = GameObject.Find("Flashlight");
+        _player = GameObject.FindObjectOfType<PlayerController>().gameObject;
+        _light = GameObject.FindObjectOfType<LightController>().gameObject;
 
         m_serchTime = 3;
     }
@@ -81,6 +83,17 @@ public class EnemyTestScripts : MonoBehaviour
                 GotoNextPoint();
         }
         m_serchTime += Time.deltaTime;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Player":
+                this.transform.position = _backPoint.position;
+                break;
+
+        }
     }
 
     void OnDrawGizmosSelected()

@@ -31,24 +31,9 @@ public class LightController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             m_flashLight.SetActive(!m_flashLight.activeSelf);
+            if (m_isLight) m_isLight = false;
+            else m_isLight = true;
+            Debug.Log(m_isLight);
         }
     }
-
-    /// <summary>
-    /// バッテリーゲージのImage
-    /// </summary>
-    void ButteryGuage()
-    {
-        
-    }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Item")) _itemText.SetActive(true);
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Item")) _itemText.SetActive(false);
-    //}
 }
