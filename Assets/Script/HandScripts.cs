@@ -18,6 +18,7 @@ public class HandScripts : MonoBehaviour
     [SerializeField] GameObject _cursorManager;
     [SerializeField] GameObject _camera;
     [SerializeField] GameObject _chest;
+    [SerializeField] GameObject _lockPanel;
     ShowPicture _showPicture;
 
     bool _takeLight;
@@ -25,11 +26,13 @@ public class HandScripts : MonoBehaviour
     bool _isOutDoor;
     bool _isItem;
     bool _isChest;
+    bool _isLockPanel;
     public bool _moveStop;
     public bool _isPicture;
     Collider _itemCollider;
     Collider _picCollider;
     Collider _lightCollider;
+    Collider _pickStoneCollider;
     // Start is called before the first frame update
     private void Start()
     {
@@ -120,6 +123,16 @@ public class HandScripts : MonoBehaviour
             _flashLight.SetActive(true);
         }
     }
+
+    void LockPanel()
+    {
+        if(_isLockPanel && Input.GetButtonDown("Item"))
+        {
+            _lockPanel.SetActive(true);
+            _camera.SetActive(false);
+            _moveStop = true;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         switch(other.gameObject.tag)
@@ -152,6 +165,12 @@ public class HandScripts : MonoBehaviour
                 _takeLight = true;
                 _lightCollider = other;
                 break;
+            case "Stone":
+                break;
+            case "LockPanel":
+                _displayText.text = "”Eキー”見る";
+                _isLockPanel = true;
+                break;
         }
     }
 
@@ -167,6 +186,8 @@ public class HandScripts : MonoBehaviour
         _camera.SetActive(true);
         _moveStop = false;
         _isPicture = false;
+        _isLockPanel = false;
+        _lockPanel.SetActive(false);
         _showPicture.ResetImage();
     }
 
@@ -184,6 +205,7 @@ public class HandScripts : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        _lightCollider = null;
         _displayText.text = "";
         _isEnterDoor = false;
         _isItem = false;
@@ -193,6 +215,7 @@ public class HandScripts : MonoBehaviour
         _isPicture = false;
         _cursorManager.GetComponent<CursorManeger>().m_cursor = false;
         _takeLight = false;
+        _isLockPanel = false;
         //_camera.SetActive(true);
     }
 }
