@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.072043225, y: 1.5, z: 0.073154606}
-  m_Center: {x: -0.000000020489097, y: 0.64, z: 0}
+  m_Size: {x: 0.3, y: 1.5, z: 0.3}
+  m_Center: {x: 0, y: 0.64, z: 0}
 --- !u!114 &6061319124187105492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,6 +58,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ce6296954619c4ab3d742538548009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _displayText: {fileID: 0}
+  _sceneManager: {fileID: 0}
+  _enemyObj: {fileID: 0}
+  _flashLight: {fileID: 0}
+  _itemManager: {fileID: 0}
+  _panel: {fileID: 0}
+  _cursorManager: {fileID: 0}
+  _camera: {fileID: 0}
+  _chest: {fileID: 0}
+  _lockPanel: {fileID: 0}
+  _moveStop: 0
+  _isPicture: 0
 --- !u!1001 &3739359869140176542
 PrefabInstance:
   m_ObjectHideFlags: 0

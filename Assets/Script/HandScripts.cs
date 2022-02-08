@@ -151,7 +151,7 @@ public class HandScripts : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             _flashLight.SetActive(true);
-            Destroy(_flashLight.gameObject);
+            Destroy(other.gameObject);
             ResetText();
         }
     }
