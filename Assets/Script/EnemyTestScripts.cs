@@ -90,6 +90,7 @@ public class EnemyTestScripts : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Player":
+                _tracking = false;
                 this.transform.position = _backPoint.position;
                 break;
 

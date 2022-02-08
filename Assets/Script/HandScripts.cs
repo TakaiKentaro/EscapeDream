@@ -150,6 +150,7 @@ public class HandScripts : MonoBehaviour
         if(_takeLight && Input.GetButtonDown("Item"))
         {
             other.gameObject.SetActive(false);
+            _flashLight.SetActive(true);
             Destroy(_flashLight.gameObject);
             ResetText();
         }
