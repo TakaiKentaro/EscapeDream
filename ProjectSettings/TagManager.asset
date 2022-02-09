@@ -16,6 +16,7 @@ TagManager:
   - FlashLight
   - LockPanel
   - Stone
+  - Radio
   layers:
   - Default
   - TransparentFX

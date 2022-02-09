@@ -132,13 +132,13 @@ public class HandScripts : MonoBehaviour
             _moveStop = true;
             switch (other.gameObject.name)
             {
-                case "Picture1":
+                case "Picture0":
                     _showPicture.ShowImage(0);
                     break;
-                case "Picture2":
+                case "Picture1":
                     _showPicture.ShowImage(1);
                     break;
-                case "Picture3":
+                case "Picture2":
                     _showPicture.ShowImage(2);
                     break;
             }

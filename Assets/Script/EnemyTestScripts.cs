@@ -49,6 +49,7 @@ public class EnemyTestScripts : MonoBehaviour
 
     void Update()
     {
+        m_serchTime += Time.deltaTime;
         //PlayerとEnemyの距離を測る
         _playerPos = _player.transform.position;
         distance = Vector3.Distance(this.transform.position, _playerPos);
@@ -57,7 +58,7 @@ public class EnemyTestScripts : MonoBehaviour
         if (_tracking)
         {
             //追跡の時の処理
-            if (distance > _quitRange && m_serchTime > 4)
+            if (distance > _quitRange && m_serchTime > 2)
             {
                 _tracking = false;
             }
@@ -65,7 +66,7 @@ public class EnemyTestScripts : MonoBehaviour
             //Playerを目標とする
             _navMeshAgent.destination = _playerPos;
         }
-        else
+        if(!_tracking)
         {
             //Playerの追跡をはじめる処理
             if (distance < _serchRange)
@@ -82,7 +83,7 @@ public class EnemyTestScripts : MonoBehaviour
             if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 0.5f)
                 GotoNextPoint();
         }
-        m_serchTime += Time.deltaTime;
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -92,6 +93,7 @@ public class EnemyTestScripts : MonoBehaviour
             case "Player":
                 _tracking = false;
                 this.transform.position = _backPoint.position;
+                Debug.Log("捕まえた");
                 break;
 
         }
