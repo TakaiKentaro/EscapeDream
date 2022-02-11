@@ -75,9 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7d97391e2eace45be65ff1fa635f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 3
+  _moveSpeed: 1
   h: 0
   v: 0
-  m_staminaGauge: {fileID: 5960585929457389455, guid: 5ba2590926f80a344a7fc665aa9bffd4,
-    type: 3}
-  m_maxValu: 4
+  _respownPos: {fileID: 0}
+  _hand: {fileID: 0}
+  _staminaGauge: {fileID: 0}
+  _maxValu: 1
+  _enemy: {fileID: 0}
