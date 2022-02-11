@@ -20,6 +20,7 @@ public class HandScripts : MonoBehaviour
     [SerializeField] GameObject _camera;
     [SerializeField] GameObject _chest;
     [SerializeField] GameObject _lockPanel;
+    [SerializeField] GameObject _radio;
     ShowPicture _showPicture;
 
     bool _takeLight;
@@ -31,6 +32,7 @@ public class HandScripts : MonoBehaviour
     bool _isPickStone;
     public bool _moveStop;
     public bool _isPicture;
+    bool _radioReset;
     Collider _itemCollider;
     Collider _picCollider;
     Collider _lightCollider;
@@ -40,6 +42,8 @@ public class HandScripts : MonoBehaviour
     {
         _flashLight.SetActive(false);
         _showPicture = GameObject.FindObjectOfType<ShowPicture>();
+        PauseManager.Instance.PauseEvent += StopLook;
+        PauseManager.Instance.PauseEnd += MoveLook;
     }
 
     private void Update()
@@ -51,6 +55,7 @@ public class HandScripts : MonoBehaviour
         LookImage(_picCollider);
         TakeLight(_lightCollider);
         StoneInput(_pickStoneCollider);
+        RadioStop();
     }
 
     void KeyInput()
@@ -166,6 +171,25 @@ public class HandScripts : MonoBehaviour
             _moveStop = true;
         }
     }
+
+    void StopLook()
+    {
+        _camera.SetActive(false);
+    }
+    void MoveLook()
+    {
+        _camera.SetActive(true);
+    }
+
+    void RadioStop()
+    {
+        if(_radioReset && Input.GetButtonDown("Item"))
+        {
+            _radio.GetComponent<RadioSounds>()._count = 0;
+            _radio.GetComponent<RadioSounds>()._audioSource.Stop();
+            _displayText.text = "";
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         switch(other.gameObject.tag)
@@ -206,6 +230,13 @@ public class HandScripts : MonoBehaviour
             case "LockPanel":
                 _displayText.text = "”Eキー”調べる";
                 _isLockPanel = true;
+                break;
+            case "Radio":
+                if(_radio.GetComponent<RadioSounds>()._count >= 5)
+                {
+                    _displayText.text = "”Eキー”止める";
+                    _radioReset = true;
+                }
                 break;
         }
     }
@@ -253,6 +284,7 @@ public class HandScripts : MonoBehaviour
         _isLockPanel = false;
         _moveStop = false;
         _isPickStone = false;
+        _radioReset = false;
         //_camera.SetActive(true);
     }
 }

@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float h;
     public float v;
 
+    bool _canMove = false;
+
     [SerializeField] Transform _respownPos;
     [SerializeField] GameObject _hand;
 
@@ -34,11 +36,24 @@ public class PlayerController : MonoBehaviour
         _enemy = GameObject.FindObjectOfType<EnemyTestScripts>().gameObject;
         _saveMax = _maxValu;
         _hand = GameObject.Find("HandCollider");
+
+        PauseManager.Instance.PauseEvent += MoveStop;
+        PauseManager.Instance.PauseEnd += MoveStart;
+    }
+
+    void MoveStop()
+    {
+        _canMove = true;
+    }
+    void MoveStart()
+    {
+        _canMove = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_canMove) return;
         if(_hand.GetComponent<HandScripts>()._moveStop == true) return;
         Move();
         MoveGuage();

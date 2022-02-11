@@ -2,14 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioSounds : MonoBehaviour
+public class RadioSounds : MonoBehaviour
 {
+    public AudioSource _audioSource;
+
+    public int _count = 0;
+
+    void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("あたった");
+            _count++;
+            if (_count >= 5)
+            {
+                _audioSource.Play();
+            }
         }
     }
 }

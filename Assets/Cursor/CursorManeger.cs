@@ -11,10 +11,26 @@ public class CursorManeger : MonoBehaviour
     /// </summary>
     public bool m_cursor;
 
+    private void Start()
+    {
+        PauseManager.Instance.PauseEvent += ShowCursor;
+        PauseManager.Instance.PauseEnd += HideCursor;
+    }
+
     private void Update()
     {
         SetUp();
     }
+
+    void ShowCursor()
+    {
+        m_cursor = true;
+    }
+    void HideCursor()
+    {
+        m_cursor = false;
+    }
+
     public void SetUp()
     {
         Cursor.visible = m_cursor;

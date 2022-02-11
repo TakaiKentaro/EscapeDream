@@ -22,6 +22,7 @@ public class EnemyTestScripts : MonoBehaviour
     [SerializeField] Transform _backPoint;
 
     float m_serchTime;
+    bool _move;
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -32,6 +33,8 @@ public class EnemyTestScripts : MonoBehaviour
         _player = GameObject.FindObjectOfType<PlayerController>().gameObject;
         _light = GameObject.FindObjectOfType<LightController>().gameObject;
 
+        PauseManager.Instance.PauseEvent += MoveStop;
+        PauseManager.Instance.PauseEnd += MoveStart;
         m_serchTime = 3;
     }
 
@@ -40,12 +43,23 @@ public class EnemyTestScripts : MonoBehaviour
     {
         if (_points.Length == 0)
             return;
-
-        _navMeshAgent.destination = _points[_destPoint].position;
+        if(!_move)
+        {
+            _navMeshAgent.destination = _points[_destPoint].position;
+        }
 
         _destPoint = (_destPoint + 1) % _points.Length;
     }
 
+    void MoveStop()
+    {
+        _navMeshAgent.speed = 0;
+    }
+
+    void MoveStart()
+    {
+        _navMeshAgent.speed = 3.5f;
+    }
 
     void Update()
     {
