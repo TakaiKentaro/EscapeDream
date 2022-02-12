@@ -22,7 +22,7 @@ public class CursorManeger : MonoBehaviour
         SetUp();
     }
 
-    void ShowCursor()
+    public void ShowCursor()
     {
         m_cursor = true;
     }

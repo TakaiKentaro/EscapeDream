@@ -7,7 +7,7 @@ public class HandScripts : MonoBehaviour
 {
     [Header("テキスト")]
     [SerializeField] Text _displayText;
-    
+
     [Header("シーン移動のscript")]
     [SerializeField] GameObject _sceneManager;
 
@@ -60,9 +60,9 @@ public class HandScripts : MonoBehaviour
 
     void KeyInput()
     {
-        if(_isItem)
+        if (_isItem)
         {
-            if(Input.GetButtonDown("Item") && _itemManager.GetComponent<ItemManager>()._isKey == false)
+            if (Input.GetButtonDown("Item") && _itemManager.GetComponent<ItemManager>()._isKey == false)
             {
                 _displayText.text = "鍵を取った";
                 _itemManager.GetComponent<ItemManager>()._isKey = true;
@@ -73,7 +73,7 @@ public class HandScripts : MonoBehaviour
     }
     void StoneInput(Collider other)
     {
-        if(_isPickStone && Input.GetButtonDown("Item"))
+        if (_isPickStone && Input.GetButtonDown("Item"))
         {
             switch (other.gameObject.name)
             {
@@ -130,29 +130,21 @@ public class HandScripts : MonoBehaviour
 
     void LookImage(Collider other)
     {
-        if(_isPicture && Input.GetButtonDown("Item"))
+        if (_isPicture && Input.GetButtonDown("Item"))
         {
-            _cursorManager.GetComponent<CursorManeger>().m_cursor = true;
+            _cursorManager.GetComponent<CursorManeger>().ShowCursor();
             _camera.SetActive(false);
             _moveStop = true;
-            switch (other.gameObject.name)
-            {
-                case "Picture0":
-                    _showPicture.ShowImage(0);
-                    break;
-                case "Picture1":
-                    _showPicture.ShowImage(1);
-                    break;
-                case "Picture2":
-                    _showPicture.ShowImage(2);
-                    break;
-            }
+            _showPicture.ShowImage(other.GetComponent<PictureManager>().Num);
+             
+            //string pname = other.gameObject.name;
+            //_showPicture.ShowImage((pname[pname.Length - 1]));
         }
     }
 
     void TakeLight(Collider other)
     {
-        if(_takeLight && Input.GetButtonDown("Item"))
+        if (_takeLight && Input.GetButtonDown("Item"))
         {
             other.gameObject.SetActive(false);
             _flashLight.SetActive(true);
@@ -163,7 +155,7 @@ public class HandScripts : MonoBehaviour
 
     void LockPanel()
     {
-        if(_isLockPanel && Input.GetButtonDown("Item"))
+        if (_isLockPanel && Input.GetButtonDown("Item"))
         {
             _cursorManager.GetComponent<CursorManeger>().m_cursor = true;
             _lockPanel.SetActive(true);
@@ -183,7 +175,7 @@ public class HandScripts : MonoBehaviour
 
     void RadioStop()
     {
-        if(_radioReset && Input.GetButtonDown("Item"))
+        if (_radioReset && Input.GetButtonDown("Item"))
         {
             _radio.GetComponent<RadioSounds>()._count = 0;
             _radio.GetComponent<RadioSounds>()._audioSource.Stop();
@@ -192,7 +184,7 @@ public class HandScripts : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        switch(other.gameObject.tag)
+        switch (other.gameObject.tag)
         {
             case "Key":
                 _displayText.text = "”Eキー”アイテムを取る";
@@ -232,7 +224,7 @@ public class HandScripts : MonoBehaviour
                 _isLockPanel = true;
                 break;
             case "Radio":
-                if(_radio.GetComponent<RadioSounds>()._count >= 5)
+                if (_radio.GetComponent<RadioSounds>()._count >= 5)
                 {
                     _displayText.text = "”Eキー”止める";
                     _radioReset = true;
