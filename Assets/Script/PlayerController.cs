@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("敵")]
     [SerializeField] GameObject _enemy;
+
+    [Header("血")]
+    [SerializeField] GameObject _bloodSprite;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -127,9 +130,11 @@ public class PlayerController : MonoBehaviour
         switch(collision.gameObject.tag)
         {
             case "Enemy":
+                Vector3 myPos = this.transform.position;
+                myPos.y = _bloodSprite.transform.position.y;
+                Instantiate(_bloodSprite, myPos, Quaternion.identity);
                 this.transform.position = _respownPos.position;
                 break;
-
         }
     }
 }
