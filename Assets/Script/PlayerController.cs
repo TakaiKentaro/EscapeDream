@@ -124,12 +124,12 @@ public class PlayerController : MonoBehaviour
         _stopRun = false;
         _maxValu = _saveMax;
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         switch(collision.gameObject.tag)
         {
             case "Enemy":
+                Debug.Log("hhhhhhh");
                 Vector3 myPos = this.transform.position;
                 myPos.y = _bloodSprite.transform.position.y;
                 Instantiate(_bloodSprite, myPos, Quaternion.identity);
