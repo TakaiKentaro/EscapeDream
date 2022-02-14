@@ -99,22 +99,18 @@ public class HandScripts : MonoBehaviour
     }
     void DoorInOut()
     {
-        if (_isEnterDoor && Input.GetButtonDown("Item"))
-        {
-            _sceneManager.GetComponent<SceneManagerScript>().DoFadeImageIn(1f);
-        }
-
         if (_isOutDoor && Input.GetButtonDown("Item"))　//ドアを出る
         {
             if (_itemManager.GetComponent<ItemManager>()._isKey == true) //鍵を持っているかを判定
             {
-                _sceneManager.GetComponent<SceneManagerScript>().DoFadeImageIn(1f);
+                _sceneManager.GetComponent<SceneManagerScript>().DoGoal(1f);
             }
             else
             {
                 _displayText.text = "鍵がない";
+                Invoke(nameof(ResetText), 2);
             }
-        }
+        }    
     }
 
     void Chest()
@@ -136,9 +132,6 @@ public class HandScripts : MonoBehaviour
             _camera.SetActive(false);
             _moveStop = true;
             _showPicture.ShowImage(other.GetComponent<PictureManager>().Num);
-             
-            //string pname = other.gameObject.name;
-            //_showPicture.ShowImage((pname[pname.Length - 1]));
         }
     }
 
@@ -149,6 +142,7 @@ public class HandScripts : MonoBehaviour
             other.gameObject.SetActive(false);
             _flashLight.SetActive(true);
             Destroy(other.gameObject);
+            _takeLight = false;
             ResetText();
         }
     }
@@ -254,6 +248,7 @@ public class HandScripts : MonoBehaviour
     {
         _displayText.text = "";
         _isEnterDoor = false;
+        _isOutDoor = false;
         _isItem = false;
         _itemCollider = null;
         _isChest = false;

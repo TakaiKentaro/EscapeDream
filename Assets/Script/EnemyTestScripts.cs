@@ -29,10 +29,6 @@ public class EnemyTestScripts : MonoBehaviour
         _navMeshAgent.autoBraking = false;
 
         GotoNextPoint();
-
-        _player = GameObject.FindObjectOfType<PlayerController>().gameObject;
-        _light = GameObject.FindObjectOfType<LightController>().gameObject;
-
         PauseManager.Instance.PauseEvent += MoveStop;
         PauseManager.Instance.PauseEnd += MoveStart;
         m_serchTime = 3;

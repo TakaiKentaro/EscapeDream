@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _staminaRect = _staminaGauge.GetComponent<RectTransform>();
         //_enemy = GameObject.Find("TestEnemy");
-        _enemy = GameObject.FindObjectOfType<EnemyTestScripts>().gameObject;
         _saveMax = _maxValu;
         _hand = GameObject.Find("HandCollider");
 
@@ -57,9 +56,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (_canMove) return;
-        if(_hand.GetComponent<HandScripts>()._moveStop == true) return;
-        Move();
+        if (_hand.GetComponent<HandScripts>()._moveStop == true) return;
         MoveGuage();
+        Move();
+        
     }
     private void Move()
     {
@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
 
             if (h != 0 || v != 0)
             {
-                _enemy.GetComponent<EnemyTestScripts>()._serchRange = 5;
                 _check = true;
             }
         }
@@ -129,7 +128,6 @@ public class PlayerController : MonoBehaviour
         switch(collision.gameObject.tag)
         {
             case "Enemy":
-                Debug.Log("hhhhhhh");
                 Vector3 myPos = this.transform.position;
                 myPos.y = _bloodSprite.transform.position.y;
                 Instantiate(_bloodSprite, myPos, Quaternion.identity);

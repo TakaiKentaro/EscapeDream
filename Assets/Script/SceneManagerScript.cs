@@ -26,6 +26,7 @@ public class SceneManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _fadeImage.color = new Color(0, 0, 0);
         _fadeImage.gameObject.SetActive(true);
         DoFadeImageOut(0f);
     }
@@ -35,12 +36,12 @@ public class SceneManagerScript : MonoBehaviour
     {
         if (_check)
         {
-            DoFadeImageIn(1f);
+            DoGoMainGame();
             _check = false;
         }
         if (_enterCheck)
         {
-            DoEnterFade(1f);
+            DoGoal(1f);
             _enterCheck = false;
         }
         if (_startCheck)//スタートシーンでドアから移動したときに呼ぶ
@@ -72,17 +73,18 @@ public class SceneManagerScript : MonoBehaviour
 
     public void DoGoDrean(float color)//Bedに入った時の関数
     {
-        _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("SampleScene"));
+        _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("DreamScene"));
     }
 
-    public void DoFadeImageIn(float color)
+    public void DoGoMainGame()
     {
-        _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("SampleScene"));
+        SceneManager.LoadScene("SampleScene");
     }
 
-    public void DoEnterFade(float color)
+    public void DoGoal(float color)
     {
-        _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("SampleScene"));
+        _fadeImage.color = new Color(255, 255, 255);
+        _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("TitleScene"));
     }
 
 }

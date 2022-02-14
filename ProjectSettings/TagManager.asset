@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Batteries
   - Pillar
   - Item
   - EnterDoor
@@ -18,6 +17,7 @@ TagManager:
   - Stone
   - Radio
   - Bed
+  - WarpPoint
   layers:
   - Default
   - TransparentFX

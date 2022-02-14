@@ -18,7 +18,7 @@ public class RadioSounds : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             _count++;
-            if (_count >= 5)
+            if (_count >= 4)
             {
                 _audioSource.Play();
             }
