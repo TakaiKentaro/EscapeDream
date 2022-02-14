@@ -21,6 +21,7 @@ public class SceneManagerScript : MonoBehaviour
     public bool _check = false;
     public bool _enterCheck = false;
     public bool _startCheck = false;
+    public bool _goDream = false;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,11 @@ public class SceneManagerScript : MonoBehaviour
             DoFadeHousePoint(1f);
             _startCheck = false;
         }
+        if(_goDream)
+        {
+            DoGoDrean(1f);
+            _goDream = false;
+        }
     }
     public void DoFadeImageOut(float color)
     {
@@ -62,6 +68,11 @@ public class SceneManagerScript : MonoBehaviour
                 _playerObj.transform.position = _startPoint.position;
                 _fadeImage.DOFade(0f, 3f);
             });
+    }
+
+    public void DoGoDrean(float color)//Bedに入った時の関数
+    {
+        _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("SampleScene"));
     }
 
     public void DoFadeImageIn(float color)

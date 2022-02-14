@@ -17,6 +17,7 @@ TagManager:
   - LockPanel
   - Stone
   - Radio
+  - Bed
   layers:
   - Default
   - TransparentFX

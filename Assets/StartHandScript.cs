@@ -14,10 +14,12 @@ public class StartHandScript : MonoBehaviour
 
     [Header("bool管理")]
     bool _enterDoor;
+    bool _sleepBed;
 
     private void Update()
     {
         EnterGame();
+        SleepBed();
     }
 
     void EnterGame()
@@ -25,6 +27,15 @@ public class StartHandScript : MonoBehaviour
         if(_enterDoor && Input.GetButtonDown("Item"))
         {
             _sceneObj.GetComponent<SceneManagerScript>()._startCheck = true;
+            _desplayText.text = "";
+        }
+    }
+    void SleepBed()
+    {
+        if (_sleepBed && Input.GetButtonDown("Item"))
+        {
+            _sceneObj.GetComponent<SceneManagerScript>()._goDream = true;
+            _desplayText.text = "";
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -34,6 +45,10 @@ public class StartHandScript : MonoBehaviour
             case "EnterDoor":
                 _desplayText.text = "”Eキー”入る";
                 _enterDoor = true;
+                break;
+            case "Bed":
+                _desplayText.text = "”Eキー”眠る";
+                _sleepBed = true;
                 break;
         }
     }
