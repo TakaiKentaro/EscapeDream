@@ -24,7 +24,7 @@ public class StartHandScript : MonoBehaviour
     {
         if(_enterDoor && Input.GetButtonDown("Item"))
         {
-            _sceneObj.GetComponent<SceneManagerScript>()._enterCheck = true;
+            _sceneObj.GetComponent<SceneManagerScript>()._startCheck = true;
         }
     }
     private void OnTriggerEnter(Collider other)
