@@ -18,6 +18,7 @@ TagManager:
   - Radio
   - Bed
   - WarpPoint
+  - LockPanel2
   layers:
   - Default
   - TransparentFX

@@ -20,6 +20,7 @@ public class HandScripts : MonoBehaviour
     [SerializeField] GameObject _camera;
     [SerializeField] GameObject _chest;
     [SerializeField] GameObject _lockPanel;
+    [SerializeField] GameObject _lockPanel2;
     [SerializeField] GameObject _radio;
     ShowPicture _showPicture;
 
@@ -29,6 +30,7 @@ public class HandScripts : MonoBehaviour
     bool _isItem;
     bool _isChest;
     bool _isLockPanel;
+    bool _isLockPanel2;
     bool _isPickStone;
     public bool _moveStop;
     public bool _isPicture;
@@ -56,6 +58,7 @@ public class HandScripts : MonoBehaviour
         TakeLight(_lightCollider);
         StoneInput(_pickStoneCollider);
         RadioStop();
+        LockPanel2();
     }
 
     void KeyInput()
@@ -158,6 +161,17 @@ public class HandScripts : MonoBehaviour
         }
     }
 
+    void LockPanel2()
+    {
+        if (_isLockPanel2 && Input.GetButtonDown("Item"))
+        {
+            _cursorManager.GetComponent<CursorManeger>().m_cursor = true;
+            _lockPanel2.SetActive(true);
+            _camera.SetActive(false);
+            _moveStop = true;
+        }
+    }
+
     void StopLook()
     {
         _camera.SetActive(false);
@@ -194,7 +208,7 @@ public class HandScripts : MonoBehaviour
                 _isOutDoor = true;
                 break;
             case "Chest":
-                //if (_chest.GetComponent<TresureChest>()._letOpen == true) break;
+                if (_chest.GetComponent<TresureChest>()._letOpen == true) break;
                 _displayText.text = "”Eキー”開ける";
                 _isChest = true;
                 break;
@@ -216,6 +230,11 @@ public class HandScripts : MonoBehaviour
             case "LockPanel":
                 _displayText.text = "”Eキー”調べる";
                 _isLockPanel = true;
+                break;
+            case "LockPanel2":
+                if (_lockPanel2.GetComponent<LockPanel2>()._open == true) break;
+                _displayText.text = "”Eキー”調べる";
+                _isLockPanel2 = true;
                 break;
             case "Radio":
                 if (_radio.GetComponent<RadioSounds>()._count >= 5)
@@ -240,6 +259,7 @@ public class HandScripts : MonoBehaviour
         _moveStop = false;
         _isPicture = false;
         _isLockPanel = false;
+        _lockPanel2.SetActive(false);
         _lockPanel.SetActive(false);
         _showPicture.ResetImage();
     }
