@@ -84,17 +84,23 @@ public class HandScripts : MonoBehaviour
                     _displayText.text = "丸い石を拾った";
                     _lockPanel.GetComponent<LockPanelScript>()._maruCheck = true;
                     Destroy(_pickStoneCollider.gameObject);
+                    _pickStoneCollider = null;
+                    _isPickStone = false;
                     break;
                 case "SankakuStone":
                     _displayText.text = "三角形の石を拾った";
                     _enemyObj.SetActive(true);
                     _lockPanel.GetComponent<LockPanelScript>()._sankakuCheck = true;
                     Destroy(_pickStoneCollider.gameObject);
+                    _pickStoneCollider = null;
+                    _isPickStone = false;
                     break;
                 case "SikakuStone":
                     _displayText.text = "四角い石を拾った";
                     _lockPanel.GetComponent<LockPanelScript>()._sikakuCheck = true;
                     Destroy(_pickStoneCollider.gameObject);
+                    _pickStoneCollider = null;
+                    _isPickStone = false;
                     break;
             }
             Invoke(nameof(ResetText), 2);
@@ -232,7 +238,7 @@ public class HandScripts : MonoBehaviour
                 _isLockPanel = true;
                 break;
             case "LockPanel2":
-                if (_lockPanel2.GetComponent<LockPanel2>()._open == true) break;
+                //if (_lockPanel2.GetComponent<LockPanel2>()._open == true) break;
                 _displayText.text = "”Eキー”調べる";
                 _isLockPanel2 = true;
                 break;
@@ -259,6 +265,7 @@ public class HandScripts : MonoBehaviour
         _moveStop = false;
         _isPicture = false;
         _isLockPanel = false;
+        _isLockPanel2 = false;
         _lockPanel2.SetActive(false);
         _lockPanel.SetActive(false);
         _showPicture.ResetImage();
@@ -290,7 +297,6 @@ public class HandScripts : MonoBehaviour
         _takeLight = false;
         _isLockPanel = false;
         _moveStop = false;
-        _isPickStone = false;
         _radioReset = false;
         //_camera.SetActive(true);
     }

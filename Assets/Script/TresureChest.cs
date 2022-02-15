@@ -7,7 +7,7 @@ using System.Linq;
 public class TresureChest : MonoBehaviour
 {
     int[] _passArray = new int[] {0,0,0,0};
-    int[] _correct = new int[] { 1, 2, 2, 6 };
+    int[] _correct = new int[] { 4, 0, 2, 2 };
 
     public Image[] _bottons;
 

@@ -7,7 +7,7 @@ using System.Linq;
 public class LockPanel2 : MonoBehaviour
 {
     int[] _passArray = new int[] { 0, 0 };
-    int[] _correct = new int[] { 1, 4 };
+    int[] _correct = new int[] { 1, 7 };
 
     [Header("ボタン")]
     [SerializeField] Image[] _bottons;
