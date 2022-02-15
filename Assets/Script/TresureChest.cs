@@ -20,6 +20,8 @@ public class TresureChest : MonoBehaviour
 
     [SerializeField] GameObject _itemKey;
 
+    public bool _letOpen = false;
+
     void Start()
     {
         _itemKey.SetActive(false);
@@ -47,9 +49,7 @@ public class TresureChest : MonoBehaviour
         int num = _passArray[position];
         _bottons[position].sprite = _sprites[num];
     }
-
-    public bool _letOpen = false;
-
+    
     public void OnClickEnter()
     {
         //パスワードが合っていた時の処理

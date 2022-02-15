@@ -14,6 +14,8 @@ public class SceneManagerScript : MonoBehaviour
     [Header("FadeImage")]
     [SerializeField] Image _fadeImage;
 
+    [SerializeField] Canvas _sceneCanvas;
+
     [Header("テレポート用Transform")]
     [SerializeField] Transform _startPoint;
 
@@ -71,6 +73,25 @@ public class SceneManagerScript : MonoBehaviour
             });
     }
 
+    public void DoClickGameStart()
+    {
+        _fadeImage.DOFade(1f, 3f).OnComplete(() => SceneManager.LoadScene("StartScene"));
+    }
+
+    public void DOExitGame()
+    {
+        _sceneCanvas.sortingOrder = 10;
+        _fadeImage.DOFade(1f, 3f)
+            .OnComplete(() =>
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+    Application.Quit();
+#endif
+            });
+    }
+
     public void DoGoDrean(float color)//Bedに入った時の関数
     {
         _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("DreamScene"));
@@ -83,8 +104,14 @@ public class SceneManagerScript : MonoBehaviour
 
     public void DoGoal(float color)
     {
-        _fadeImage.color = new Color(255, 255, 255);
-        _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("TitleScene"));
+        _fadeImage.color = new Color(255, 255, 255, 0);
+        _fadeImage.DOFade(color, 3f).OnComplete(() => SceneManager.LoadScene("ResultScene"));
+    }
+
+    public void GoTitle()
+    {
+        _fadeImage.color = new Color(255, 255, 255, 0);
+        _fadeImage.DOFade(1f, 3f).OnComplete(() => SceneManager.LoadScene("TitleScene"));
     }
 
 }

@@ -44,4 +44,10 @@ public class CursorManeger : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+    //private void OnDestroy()
+    //{
+    //    PauseManager.Instance.PauseEvent -= ShowCursor;
+    //    PauseManager.Instance.PauseEnd -= HideCursor;
+    //}
 }

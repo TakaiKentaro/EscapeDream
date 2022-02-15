@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
         PauseManager.Instance.PauseEvent += MoveStop;
         PauseManager.Instance.PauseEnd += MoveStart;
+
+        ScoreManager.Instance.ResetNum();
     }
 
     void MoveStop()
@@ -132,6 +134,7 @@ public class PlayerController : MonoBehaviour
                 myPos.y = _bloodSprite.transform.position.y;
                 Instantiate(_bloodSprite, myPos, Quaternion.identity);
                 this.transform.position = _respownPos.position;
+                ScoreManager.Instance.AddDeathCount();
                 break;
         }
     }

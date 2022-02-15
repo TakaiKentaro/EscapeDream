@@ -39,12 +39,14 @@ public class AudioController : MonoBehaviour
         SetSE(_startVolumeSE);
     }
 
-    private void Update()
+
+    public void OnClickAudio()
     {
-        if (Input.GetButtonDown(_getButtonName))
-        {
-            _canvas.gameObject.SetActive(!_canvas.activeSelf);
-        }
+        _canvas.gameObject.SetActive(true);
+    }
+    public void OnClickFadeAudio()
+    {
+        _canvas.gameObject.SetActive(false);
     }
     public void SetMaster(float volume)
     {

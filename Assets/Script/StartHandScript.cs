@@ -55,6 +55,8 @@ public class StartHandScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        _enterDoor = false;
+        _sleepBed = false;
         _desplayText.text = "";
     }
 }

@@ -214,7 +214,7 @@ public class HandScripts : MonoBehaviour
                 _isOutDoor = true;
                 break;
             case "Chest":
-                if (_chest.GetComponent<TresureChest>()._letOpen == true) break;
+                //if (_chest.GetComponent<TresureChest>()._letOpen == true) break;
                 _displayText.text = "”Eキー”開ける";
                 _isChest = true;
                 break;
