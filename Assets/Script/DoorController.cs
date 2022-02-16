@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DoorController : MonoBehaviour
 {
     Animator _anim;
+    [SerializeField]AudioSource _audio;
 
     [Header("ライト")]
     [SerializeField] GameObject _light;
@@ -13,6 +14,7 @@ public class DoorController : MonoBehaviour
     void Start()
     {
         _anim = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +24,7 @@ public class DoorController : MonoBehaviour
             if (other.gameObject.tag == "Player")
             {
                 _anim.SetBool("OpenDoor", true);
+                _audio.Play();
             }
         }
     }

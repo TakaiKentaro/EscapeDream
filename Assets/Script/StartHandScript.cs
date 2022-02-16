@@ -9,13 +9,22 @@ public class StartHandScript : MonoBehaviour
     [Header("テキスト")] 
     [SerializeField,Tooltip("スタート画面で出るテキスト")] Text _desplayText;
 
-    [Header("シーン移動のオブジェクト")]
+    [Header("オブジェクト")]
     [SerializeField] GameObject _sceneObj;
+    [SerializeField] GameObject _door;
+    [SerializeField] GameObject _bed;
 
     [Header("bool管理")]
     bool _enterDoor;
     bool _sleepBed;
 
+    [Header("カメラ")]
+    [SerializeField] GameObject _camera;
+    private void Start()
+    {
+        PauseManager.Instance.PauseEvent += StopLook;
+        PauseManager.Instance.PauseEnd += MoveLook;
+    }
     private void Update()
     {
         EnterGame();
@@ -27,6 +36,7 @@ public class StartHandScript : MonoBehaviour
         if(_enterDoor && Input.GetButtonDown("Item"))
         {
             _sceneObj.GetComponent<SceneManagerScript>()._startCheck = true;
+            _door.GetComponent<AudioSource>().Play();
             _desplayText.text = "";
         }
     }
@@ -35,6 +45,7 @@ public class StartHandScript : MonoBehaviour
         if (_sleepBed && Input.GetButtonDown("Item"))
         {
             _sceneObj.GetComponent<SceneManagerScript>()._goDream = true;
+            _bed.GetComponent<AudioSource>().Play();
             _desplayText.text = "";
         }
     }
@@ -58,5 +69,14 @@ public class StartHandScript : MonoBehaviour
         _enterDoor = false;
         _sleepBed = false;
         _desplayText.text = "";
+    }
+
+    void StopLook()
+    {
+        _camera.SetActive(false);
+    }
+    void MoveLook()
+    {
+        _camera.SetActive(true);
     }
 }

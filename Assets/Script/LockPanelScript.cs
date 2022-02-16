@@ -21,10 +21,13 @@ public class LockPanelScript : MonoBehaviour
     [SerializeField] GameObject _moveLockDoor;
     [SerializeField] GameObject _lockPanel;
 
+    [SerializeField] AudioSource _audio;
+
     Animator _anim;
     private void Start()
     {
         _anim = GameObject.Find(_moveLockDoor.name).GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
     }
     public void OnClickmaru()
     {
@@ -82,6 +85,7 @@ public class LockPanelScript : MonoBehaviour
         //ここに扉が開く処理
         if (_maruCheck && _sankakuCheck && _sikakuCheck)
         {
+            _audio.Play();
             _checkText.text = "扉が開いた";
             //_lockPanel.SetActive(false);
             _anim.SetBool("OpenDoor", true);

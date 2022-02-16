@@ -39,9 +39,17 @@ public class HandScripts : MonoBehaviour
     Collider _picCollider;
     Collider _lightCollider;
     Collider _pickStoneCollider;
+
+    [Header("Audio")]
+    protected AudioSource _audioSource;
+    [SerializeField] AudioClip _pickItem;
+    [SerializeField] AudioClip _lookPicure;
+    [SerializeField] AudioClip _lockOpen;
+    [SerializeField] AudioClip _doorOpen;
     // Start is called before the first frame update
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _flashLight.SetActive(false);
         _displayText.text = "ライトを入手しよう";
         _showPicture = GameObject.FindObjectOfType<ShowPicture>();
@@ -68,6 +76,7 @@ public class HandScripts : MonoBehaviour
         {
             if (Input.GetButtonDown("Item") && _itemManager.GetComponent<ItemManager>()._isKey == false)
             {
+                _audioSource.PlayOneShot(_pickItem);
                 _displayText.text = "鍵を取った";
                 _itemManager.GetComponent<ItemManager>()._isKey = true;
                 Destroy(_itemCollider.gameObject);
@@ -82,6 +91,7 @@ public class HandScripts : MonoBehaviour
             switch (other.gameObject.name)
             {
                 case "MaruStone":
+                    _audioSource.PlayOneShot(_pickItem);
                     _displayText.text = "丸い石を拾った";
                     _lockPanel.GetComponent<LockPanelScript>()._maruCheck = true;
                     Destroy(_pickStoneCollider.gameObject);
@@ -89,6 +99,7 @@ public class HandScripts : MonoBehaviour
                     _isPickStone = false;
                     break;
                 case "SankakuStone":
+                    _audioSource.PlayOneShot(_pickItem);
                     _displayText.text = "三角形の石を拾った";
                     _enemyObj.SetActive(true);
                     _lockPanel.GetComponent<LockPanelScript>()._sankakuCheck = true;
@@ -97,13 +108,14 @@ public class HandScripts : MonoBehaviour
                     _isPickStone = false;
                     break;
                 case "SikakuStone":
+                    _audioSource.PlayOneShot(_pickItem);
                     _displayText.text = "四角い石を拾った";
                     _lockPanel.GetComponent<LockPanelScript>()._sikakuCheck = true;
                     Destroy(_pickStoneCollider.gameObject);
                     _pickStoneCollider = null;
                     _isPickStone = false;
                     break;
-            }
+            } 
             Invoke(nameof(ResetText), 2);
         }
     }
@@ -113,6 +125,7 @@ public class HandScripts : MonoBehaviour
         {
             if (_itemManager.GetComponent<ItemManager>()._isKey == true) //鍵を持っているかを判定
             {
+                _audioSource.PlayOneShot(_doorOpen);
                 _sceneManager.GetComponent<SceneManagerScript>().DoGoal(1f);
             }
             else
@@ -138,6 +151,7 @@ public class HandScripts : MonoBehaviour
     {
         if (_isPicture && Input.GetButtonDown("Item"))
         {
+            _audioSource.PlayOneShot(_lookPicure);
             _cursorManager.GetComponent<CursorManeger>().ShowCursor();
             _camera.SetActive(false);
             _moveStop = true;
@@ -149,6 +163,7 @@ public class HandScripts : MonoBehaviour
     {
         if (_takeLight && Input.GetButtonDown("Item"))
         {
+            _audioSource.PlayOneShot(_pickItem);
             other.gameObject.SetActive(false);
             _flashLight.SetActive(true);
             Destroy(other.gameObject);

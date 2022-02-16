@@ -21,11 +21,12 @@ public class TresureChest : MonoBehaviour
 
     [SerializeField] GameObject _itemKey;
 
-
+    [SerializeField] AudioSource _audio;
     void Start()
     {
         _itemKey.SetActive(false);
-        _anim = GameObject.Find(_chestCap.name).GetComponent<Animator>(); 
+        _anim = GameObject.Find(_chestCap.name).GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
     }
 
     //ボタンを押して1～9まで変更できる
@@ -55,6 +56,7 @@ public class TresureChest : MonoBehaviour
         //パスワードが合っていた時の処理
         if(_passArray.SequenceEqual(_correct))
         {
+            _audio.Play();
             _itemKey.SetActive(true);
             _message.text = "鍵が開いた";
             _anim.SetBool("Open", true);

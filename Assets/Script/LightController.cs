@@ -8,11 +8,14 @@ public class LightController : MonoBehaviour
     [SerializeField] GameObject m_flashLight;
     [SerializeField] GameObject _hand;
 
+    AudioSource _audio;
+
     public bool m_isLight = true;
 
        // Start is called before the first frame update
     void Start()
     {
+        _audio = GetComponent<AudioSource>();
         _hand = GameObject.Find("HandCollider");
     }
 
@@ -33,6 +36,7 @@ public class LightController : MonoBehaviour
             m_flashLight.SetActive(!m_flashLight.activeSelf);
             if (m_isLight) m_isLight = false;
             else m_isLight = true;
+            _audio.Play();
             Debug.Log(m_isLight);
         }
     }

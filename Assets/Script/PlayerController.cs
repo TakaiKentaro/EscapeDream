@@ -34,6 +34,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("カウント")]
     [SerializeField] GameObject _countManager;
+
+    [Header("Audio")]
+    protected AudioSource _audio;
+    [SerializeField] AudioClip _walk;
+    [SerializeField] AudioClip _run;
+    [SerializeField] AudioClip _seki;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -41,6 +47,8 @@ public class PlayerController : MonoBehaviour
         //_enemy = GameObject.Find("TestEnemy");
         _saveMax = _maxValu;
         _hand = GameObject.Find("HandCollider");
+
+        _audio = GetComponent<AudioSource>();
 
         PauseManager.Instance.PauseEvent += MoveStop;
         PauseManager.Instance.PauseEnd += MoveStart;
@@ -64,7 +72,7 @@ public class PlayerController : MonoBehaviour
         if (_hand.GetComponent<HandScripts>()._moveStop == true) return;
         MoveGuage();
         Move();
-        
+
     }
     private void Move()
     {
@@ -73,7 +81,7 @@ public class PlayerController : MonoBehaviour
         if (_stopRun) _moveSpeed = 1;
         else _moveSpeed = 3;
 
-        
+
         Vector3 dir = new Vector3(h, 0, v);
         dir = Camera.main.transform.TransformDirection(dir);
         dir.y = 0;
@@ -83,15 +91,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey("left shift") && !_stopRun)
         {
             _moveSpeed = 5;//ダッシュ時スピードアップ
-
+            
             if (h != 0 || v != 0)
             {
                 _check = true;
             }
         }
+        if(Input.GetKeyDown("left shift") && !_stopRun)
+        {
+            _audio.PlayOneShot(_run);
+        }
         if (Input.GetKeyUp("left shift") && !_stopRun)
         {
             _check = false;
+            
             _moveSpeed = 3;//歩きスピード
         }
         _rb.velocity = dir.normalized * _moveSpeed + _rb.velocity.y * Vector3.up;
@@ -107,7 +120,7 @@ public class PlayerController : MonoBehaviour
         {
             _maxValu += Time.deltaTime;
         }
-        if (_maxValu <= 0　&& !_stopRun)
+        if (_maxValu <= 0 && !_stopRun)
         {
             _stopRun = true;
             StartCoroutine(StaminaLoss());
@@ -119,9 +132,9 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         _check = false;
+        _audio.PlayOneShot(_seki);
         while (_maxValu <= _saveMax)
         {
-            
             _maxValu += Time.deltaTime;
             yield return null;
         }
@@ -130,7 +143,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        switch(collision.gameObject.tag)
+        switch (collision.gameObject.tag)
         {
             case "Enemy":
                 Vector3 myPos = this.transform.position;

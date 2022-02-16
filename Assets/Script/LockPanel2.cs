@@ -19,10 +19,12 @@ public class LockPanel2 : MonoBehaviour
     [Header("とびら")]
     [SerializeField] Animator LockDoor;
     Animator _anim;
+
+    [SerializeField] AudioSource _audio;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(LockDoor.name);
+        _audio = GetComponent<AudioSource>();
     }
 
     //ボタンを押して1～9まで変更できる
@@ -51,6 +53,7 @@ public class LockPanel2 : MonoBehaviour
         //パスワードが合っていた時の処理
         if (_passArray.SequenceEqual(_correct))
         {
+            _audio.Play();
             _open = true;
             _message.text = "鍵が開いた";
             LockDoor.SetBool("OpenDoor", true);
