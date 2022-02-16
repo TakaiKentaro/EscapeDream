@@ -17,10 +17,10 @@ public class TresureChest : MonoBehaviour
 
     [SerializeField] GameObject _chestCap;
     Animator _anim;
+    [SerializeField] BoxCollider _mainChest;
 
     [SerializeField] GameObject _itemKey;
 
-    public bool _letOpen = false;
 
     void Start()
     {
@@ -55,15 +55,15 @@ public class TresureChest : MonoBehaviour
         //パスワードが合っていた時の処理
         if(_passArray.SequenceEqual(_correct))
         {
-            _letOpen = true;
             _itemKey.SetActive(true);
             _message.text = "鍵が開いた";
             _anim.SetBool("Open", true);
-            Debug.Log("開錠した");
+
+            _mainChest.enabled = false;
         }
         else //パスワードが違うときの処理
         {
-            _message.text = "パスワードが違うようだ";
+            _message.text = "違う";
             Debug.Log("違う");
         }
     }

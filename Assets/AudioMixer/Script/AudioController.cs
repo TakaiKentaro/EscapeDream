@@ -10,7 +10,7 @@ public class AudioController : MonoBehaviour
     //AudioMixerを設定
     [SerializeField] AudioMixer _audioMixer = default;
     //どのボタンを押したときに設定画面を出すか
-    [SerializeField] string _getButtonName = " ";
+    //[SerializeField] string _getButtonName = " ";
     //ゲーム開始時の音量
 
     float _startVolumeMaster = -15f;

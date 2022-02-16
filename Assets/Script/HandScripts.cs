@@ -43,6 +43,7 @@ public class HandScripts : MonoBehaviour
     private void Start()
     {
         _flashLight.SetActive(false);
+        _displayText.text = "ライトを入手しよう";
         _showPicture = GameObject.FindObjectOfType<ShowPicture>();
         PauseManager.Instance.PauseEvent += StopLook;
         PauseManager.Instance.PauseEnd += MoveLook;
@@ -196,7 +197,8 @@ public class HandScripts : MonoBehaviour
             _displayText.text = "";
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
         switch (other.gameObject.tag)
         {
@@ -214,7 +216,6 @@ public class HandScripts : MonoBehaviour
                 _isOutDoor = true;
                 break;
             case "Chest":
-                //if (_chest.GetComponent<TresureChest>()._letOpen == true) break;
                 _displayText.text = "”Eキー”開ける";
                 _isChest = true;
                 break;
@@ -238,7 +239,6 @@ public class HandScripts : MonoBehaviour
                 _isLockPanel = true;
                 break;
             case "LockPanel2":
-                //if (_lockPanel2.GetComponent<LockPanel2>()._open == true) break;
                 _displayText.text = "”Eキー”調べる";
                 _isLockPanel2 = true;
                 break;
@@ -251,6 +251,61 @@ public class HandScripts : MonoBehaviour
                 break;
         }
     }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    switch (other.gameObject.tag)
+    //    {
+    //        case "Key":
+    //            _displayText.text = "”Eキー”アイテムを取る";
+    //            _isItem = true;
+    //            _itemCollider = other;
+    //            break;
+    //        case "EnterDoor":
+    //            _displayText.text = "”Eキー”入る";
+    //            _isEnterDoor = true;
+    //            break;
+    //        case "OutDoor":
+    //            _displayText.text = "”Eキー”出る";
+    //            _isOutDoor = true;
+    //            break;
+    //        case "Chest":
+    //            //if (_chest.GetComponent<TresureChest>()._letOpen == true) break;
+    //            _displayText.text = "”Eキー”開ける";
+    //            _isChest = true;
+    //            break;
+    //        case "Picture":
+    //            _displayText.text = "”Eキー”見る";
+    //            _isPicture = true;
+    //            _picCollider = other;
+    //            break;
+    //        case "FlashLight":
+    //            _displayText.text = "”Eキー”手に持つ";
+    //            _takeLight = true;
+    //            _lightCollider = other;
+    //            break;
+    //        case "Stone":
+    //            _displayText.text = "”Eキー”拾う";
+    //            _isPickStone = true;
+    //            _pickStoneCollider = other;
+    //            break;
+    //        case "LockPanel":
+    //            _displayText.text = "”Eキー”調べる";
+    //            _isLockPanel = true;
+    //            break;
+    //        case "LockPanel2":
+    //            //if (_lockPanel2.GetComponent<LockPanel2>()._open == true) break;
+    //            _displayText.text = "”Eキー”調べる";
+    //            _isLockPanel2 = true;
+    //            break;
+    //        case "Radio":
+    //            if (_radio.GetComponent<RadioSounds>()._count >= 5)
+    //            {
+    //                _displayText.text = "”Eキー”止める";
+    //                _radioReset = true;
+    //            }
+    //            break;
+    //    }
+    //}
 
     public void OnBackButon()
     {

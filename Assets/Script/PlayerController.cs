@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("血")]
     [SerializeField] GameObject _bloodSprite;
+
+    [Header("カウント")]
+    [SerializeField] GameObject _countManager;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -42,7 +45,7 @@ public class PlayerController : MonoBehaviour
         PauseManager.Instance.PauseEvent += MoveStop;
         PauseManager.Instance.PauseEnd += MoveStart;
 
-        ScoreManager.Instance.ResetNum();
+        _countManager.GetComponent<CountManager>().RestNum();
     }
 
     void MoveStop()
@@ -134,7 +137,7 @@ public class PlayerController : MonoBehaviour
                 myPos.y = _bloodSprite.transform.position.y;
                 Instantiate(_bloodSprite, myPos, Quaternion.identity);
                 this.transform.position = _respownPos.position;
-                ScoreManager.Instance.AddDeathCount();
+                _countManager.GetComponent<CountManager>().AddCount();
                 break;
         }
     }

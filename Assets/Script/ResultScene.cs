@@ -9,16 +9,21 @@ public class ResultScene : MonoBehaviour
     [SerializeField] Text _timerText;
     [SerializeField] Text _deathCountText;
 
+
+
     float _saveTime;
     int _saveDeathCount;
     // Start is called before the first frame update
     void Start()
     {
-        _saveTime = ScoreManager.Instance.TimerCount;
-        _saveDeathCount = ScoreManager.Instance.DeathCount;
-        
-        _timerText.text = _saveTime.ToString();
-        _deathCountText.text = _saveDeathCount.ToString();
+        _saveTime = CountManager.GetTime();
+        _saveDeathCount = CountManager.GetCount();
+
+        int minutes = Mathf.FloorToInt(_saveTime / 60F);
+        int seconds = Mathf.FloorToInt(_saveTime - minutes * 60);
+
+        _timerText.text = "クリアタイム　"　+ minutes + "分"　+ seconds + "秒";
+        _deathCountText.text = "死亡回数　"+_saveDeathCount.ToString();
     }
 
     // Update is called once per frame
