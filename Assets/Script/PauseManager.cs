@@ -23,7 +23,6 @@ public class PauseManager : MonoBehaviour
         }
         Destroy(this);
     }
-
     public void PauseEv()
     {
         PauseEvent?.Invoke();
@@ -33,10 +32,13 @@ public class PauseManager : MonoBehaviour
     {
         PauseEnd?.Invoke();
     }
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) PauseEv();
-        if (Input.GetKeyDown(KeyCode.Space)) PauseEndEv();
+        if (Input.GetButtonDown("Cancel"))
+        { 
+            PauseEv(); 
+        }
     }
 
     private void OnDestroy()

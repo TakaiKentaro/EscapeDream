@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+
 public class SensitivityController : MonoBehaviour
 {
-    GameObject _cvc;
+    [SerializeField] CinemachineVirtualCamera _cvc;
     public int _povSensitivity = 0;
 
     [SerializeField] Canvas _canvas;
 
-    CinemachinePOV _pov;
+    [SerializeField] CinemachinePOV _pov;
 
     void Start()
     {
-        _cvc = FindObjectOfType<CinemachineVirtualCameraBase>().gameObject;
         _pov = _cvc.GetComponent<CinemachinePOV>();
+
+        _pov = _cvc.GetCinemachineComponent<CinemachinePOV>();
     }
 
     public void DisplayCanvas()

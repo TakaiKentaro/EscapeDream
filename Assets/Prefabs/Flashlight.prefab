@@ -118,20 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_flashLight: {fileID: 6559391331795789988}
-  m_lowBattery: {fileID: 0}
-  m_mainBattery: {fileID: 5960585929457389455, guid: 5ba2590926f80a344a7fc665aa9bffd4,
-    type: 3}
-  m_subBattery1: {fileID: 5319287380380336889, guid: 9ab162f9db9dc0849b546f2dcf7f5ab5,
-    type: 3}
-  m_subBattery2: {fileID: 5931012899855337719, guid: e391174ba6fa59246a0d216d09a4bad2,
-    type: 3}
-  m_subBattery3: {fileID: 6610025216370314224, guid: d83a8d98ff05a0c4b8ce42d5124411fb,
-    type: 3}
-  m_subBattery4: {fileID: 4202883980772579098, guid: d1ac3964a69badc4b9a78245cb6c2d64,
-    type: 3}
-  m_batteryCapacity: 100
+  _hand: {fileID: 0}
   m_isLight: 1
-  _itemText: {fileID: 0}
 --- !u!65 &7138569748096696437
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -188,8 +176,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.1
-  m_Range: 20
+  m_Intensity: 2.5
+  m_Range: 25
   m_SpotAngle: 70
   m_InnerSpotAngle: 1
   m_CookieSize: 10
