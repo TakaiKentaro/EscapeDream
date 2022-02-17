@@ -13,22 +13,19 @@ public class StartHandScript : MonoBehaviour
     [SerializeField] GameObject _sceneObj;
     [SerializeField] GameObject _door;
     [SerializeField] GameObject _bed;
+    [SerializeField] GameObject _radio;
 
     [Header("bool管理")]
     bool _enterDoor;
     bool _sleepBed;
+    bool _stopRadio;
 
-    [Header("カメラ")]
-    [SerializeField] GameObject _camera;
-    private void Start()
-    {
-        PauseManager.Instance.PauseEvent += StopLook;
-        PauseManager.Instance.PauseEnd += MoveLook;
-    }
+    
     private void Update()
     {
         EnterGame();
         SleepBed();
+        StopRadio();
     }
 
     void EnterGame()
@@ -49,6 +46,17 @@ public class StartHandScript : MonoBehaviour
             _desplayText.text = "";
         }
     }
+    bool check = false;
+    void StopRadio()
+    {
+        if (_stopRadio && Input.GetButtonDown("Item") && !check)
+        {
+
+            _radio.GetComponent<AudioSource>().Stop();
+            check = true;
+            _desplayText.text = "";
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         switch (other.gameObject.tag)
@@ -61,6 +69,11 @@ public class StartHandScript : MonoBehaviour
                 _desplayText.text = "”Eキー”眠る";
                 _sleepBed = true;
                 break;
+            case "Radio":
+                if (check) return;
+                _desplayText.text = "”Eキー”止める";
+                _stopRadio = true;
+                break;
         }
     }
 
@@ -68,15 +81,7 @@ public class StartHandScript : MonoBehaviour
     {
         _enterDoor = false;
         _sleepBed = false;
+        _stopRadio = false;
         _desplayText.text = "";
-    }
-
-    void StopLook()
-    {
-        _camera.SetActive(false);
-    }
-    void MoveLook()
-    {
-        _camera.SetActive(true);
     }
 }

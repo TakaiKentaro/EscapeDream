@@ -17,7 +17,7 @@ public class HandScripts : MonoBehaviour
     [SerializeField] GameObject _itemManager;
     [SerializeField] GameObject _panel;
     [SerializeField] GameObject _cursorManager;
-    [SerializeField] GameObject _camera;
+    GameObject _camera;
     [SerializeField] GameObject _chest;
     [SerializeField] GameObject _lockPanel;
     [SerializeField] GameObject _lockPanel2;
@@ -53,8 +53,7 @@ public class HandScripts : MonoBehaviour
         _flashLight.SetActive(false);
         _displayText.text = "ライトを入手しよう";
         _showPicture = GameObject.FindObjectOfType<ShowPicture>();
-        PauseManager.Instance.PauseEvent += StopLook;
-        PauseManager.Instance.PauseEnd += MoveLook;
+        _camera = GameObject.Find("CM vcam1");
     }
 
     private void Update()
@@ -194,14 +193,14 @@ public class HandScripts : MonoBehaviour
         }
     }
 
-    void StopLook()
-    {
-        _camera.SetActive(false);
-    }
-    void MoveLook()
-    {
-        _camera.SetActive(true);
-    }
+    //void StopLook()
+    //{
+    //    _camera.SetActive(false);
+    //}
+    //void MoveLook()
+    //{
+    //    _camera.SetActive(true);
+    //}
 
     void RadioStop()
     {

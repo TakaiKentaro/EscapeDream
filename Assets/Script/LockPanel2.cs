@@ -53,7 +53,6 @@ public class LockPanel2 : MonoBehaviour
         //パスワードが合っていた時の処理
         if (_passArray.SequenceEqual(_correct))
         {
-            _audio.Play();
             _open = true;
             _message.text = "鍵が開いた";
             LockDoor.SetBool("OpenDoor", true);

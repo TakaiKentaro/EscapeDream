@@ -9,7 +9,7 @@ public class ResultScene : MonoBehaviour
     [SerializeField] Text _timerText;
     [SerializeField] Text _deathCountText;
 
-
+    [SerializeField] GameObject _sceneManager;
 
     float _saveTime;
     int _saveDeathCount;
@@ -29,6 +29,9 @@ public class ResultScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetButtonDown("Jump"))
+        {
+            _sceneManager.GetComponent<SceneManagerScript>().GoTitle();
+        }
     }
 }

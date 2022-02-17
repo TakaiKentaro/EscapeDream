@@ -85,9 +85,8 @@ public class LockPanelScript : MonoBehaviour
         //ここに扉が開く処理
         if (_maruCheck && _sankakuCheck && _sikakuCheck)
         {
-            _audio.Play();
+            Debug.Log("開いた");
             _checkText.text = "扉が開いた";
-            //_lockPanel.SetActive(false);
             _anim.SetBool("OpenDoor", true);
         }
     }

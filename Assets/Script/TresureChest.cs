@@ -56,7 +56,6 @@ public class TresureChest : MonoBehaviour
         //パスワードが合っていた時の処理
         if(_passArray.SequenceEqual(_correct))
         {
-            _audio.Play();
             _itemKey.SetActive(true);
             _message.text = "鍵が開いた";
             _anim.SetBool("Open", true);

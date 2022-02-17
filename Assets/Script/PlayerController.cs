@@ -37,8 +37,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Audio")]
     protected AudioSource _audio;
-    [SerializeField] AudioClip _walk;
-    [SerializeField] AudioClip _run;
     [SerializeField] AudioClip _seki;
     void Start()
     {
@@ -96,10 +94,6 @@ public class PlayerController : MonoBehaviour
             {
                 _check = true;
             }
-        }
-        if(Input.GetKeyDown("left shift") && !_stopRun)
-        {
-            _audio.PlayOneShot(_run);
         }
         if (Input.GetKeyUp("left shift") && !_stopRun)
         {
