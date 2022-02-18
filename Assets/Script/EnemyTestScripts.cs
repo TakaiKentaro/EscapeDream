@@ -60,14 +60,15 @@ public class EnemyTestScripts : MonoBehaviour
     void Update()
     {
         m_serchTime += Time.deltaTime;
-        //PlayerとEnemyの距離を測る
+
+        //Distanceを使うことでこのscriptが入ったオブジェクトから指定したオブジェクトまでの距離を数値化できる
         _playerPos = _player.transform.position;
         distance = Vector3.Distance(this.transform.position, _playerPos);
 
 
         if (_tracking)
         {
-            //追跡の時の処理
+            //追跡を行う処理の処理
             if (distance > _quitRange && m_serchTime > 2)
             {
                 _tracking = false;

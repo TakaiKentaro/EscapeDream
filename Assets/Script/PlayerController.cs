@@ -26,9 +26,6 @@ public class PlayerController : MonoBehaviour
     bool _check;
     bool _stopRun = false;
 
-    [Header("敵")]
-    [SerializeField] GameObject _enemy;
-
     [Header("血")]
     [SerializeField] GameObject _bloodSprite;
 

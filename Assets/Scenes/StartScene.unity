@@ -18059,7 +18059,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -21214,6 +21214,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3273178038439666140, guid: a4ffe406233c73b4a94cf610137d09ac,
         type: 2}
+    - target: {fileID: 1318018217445803906, guid: 2d7dceb085eec3d47905a008824b3c95,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1491876125516418315, guid: 2d7dceb085eec3d47905a008824b3c95,
         type: 3}
       propertyPath: m_Mesh
