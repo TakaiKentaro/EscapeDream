@@ -29444,11 +29444,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 350313521, guid: 869e1e4388f2ad54b9d876c791a9a68b, type: 3}
       propertyPath: m_VerticalAxis.m_MaxSpeed
-      value: 400
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 350313521, guid: 869e1e4388f2ad54b9d876c791a9a68b, type: 3}
       propertyPath: m_HorizontalAxis.m_MaxSpeed
-      value: 400
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 720487584803104767, guid: 869e1e4388f2ad54b9d876c791a9a68b,
         type: 3}
