@@ -8507,8 +8507,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.001
-  far clip plane: 50
+  near clip plane: 0.3
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -21412,7 +21412,7 @@ PrefabInstance:
     - target: {fileID: 1318018217445803906, guid: 2d7dceb085eec3d47905a008824b3c95,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1491876125516418315, guid: 2d7dceb085eec3d47905a008824b3c95,
         type: 3}
@@ -29553,12 +29553,12 @@ PrefabInstance:
     - target: {fileID: 2728957575494812732, guid: 869e1e4388f2ad54b9d876c791a9a68b,
         type: 3}
       propertyPath: m_Lens.FarClipPlane
-      value: 50
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2728957575494812732, guid: 869e1e4388f2ad54b9d876c791a9a68b,
         type: 3}
       propertyPath: m_Lens.NearClipPlane
-      value: 0.001
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6250691157673591725, guid: 869e1e4388f2ad54b9d876c791a9a68b,
         type: 3}
