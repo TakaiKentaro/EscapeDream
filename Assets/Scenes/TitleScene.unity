@@ -1076,7 +1076,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 9b4faf05cf9100c4eaf1fd7205637b71, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.01
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1705,6 +1705,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseManager Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8971121023847837187, guid: 869e1e4388f2ad54b9d876c791a9a68b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8971121023847837197, guid: 869e1e4388f2ad54b9d876c791a9a68b,
         type: 3}
       propertyPath: m_RootOrder
@@ -2037,7 +2042,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: ec625e01cd3d28048b997033b3198a61, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
